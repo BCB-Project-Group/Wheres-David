@@ -11,3 +11,6 @@ function firebaseInit() {
 
   window.db = firebase.database()
 }
+
+
+

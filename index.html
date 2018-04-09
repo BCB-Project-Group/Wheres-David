@@ -12,35 +12,100 @@
 </head>
 <body>
 
-<div class="jumbotron">
+  <div class="container">
+
+<div class="jumbotron col-xs-12">
     <h1>Where's David?</h1>
 </div>
 
-<div class="page-header">
+<div class="page-header col-xs-12">
   <h1>Find Your Local Craft Breweries!</h1>
 </div>
 
-<div class="page-intro">
+<div class="page-intro col-xs-12">
   <h2>Tell Us About Yourself</h2>
 </div>
 
-<section>
+<section class="formlabels col-xs-12">
   <form>
       <div class="form-group">
-          <label for="exampleFormControlInput1">User ID</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1">
-          </div>
-              <div class="form-group">
-                  <label for="exampleFormControlInput2">User Location</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput2">
-              </div>
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Breweries Near You Results</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-   </div>
-</form>
+          <label for="username">User ID</label>
+          <input type="email" required="true" name="username" class="form-control" id="username">
+          
+
+      </div>
+
+      <div class="form-group">
+          <label for="city">City</label>
+
+          <input type="text" name="city" required="true" class="form-control" id="city" placeholder="Enter your city">
+
+          <label for="state">State</label>
+
+          <select id="state" name="state">
+
+            <option value="AK">Alaska</option>
+            <option value="AL">Alabama</option>
+            <option value="CA">California</option>
+            <option value="NY">New York</option>
+            <option value="TX">Texas</option>
+
+          </select>
+
+          <label for="zipcode">Zipcode</label>
+
+          <input type="text" name="zipcode" required="true" id="zipcode"  placeholder="XXXXX-XXXX">
+
+
+
+          <button>Submit</button>
+      </div>
+
+      
+
+  </form>
 
 </section>
+
+<section class="col-xs-12 tableSection">
+  <div class="tableContainer">
+          <label for="breweries">Breweries Near You Results</label>
+          <table class="table" id="breweries">
+            <thead>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Location</th>
+              <th>Phone</th>
+              <th>Yelp Star Rating</th>
+              <th>Most recent Yelp Reviews</th>
+            </thead>
+            <tr>
+              <td class="name">Speakeasy</td>
+              <td class="status">Open Now</td>
+              <td class="city">San Francisco</td>
+              <td class="phone">(510)396-8194</td>
+              <td class="rating">*****</td>
+              <td>
+                
+
+            </tr>
+            <tr>
+              <td class="name">Drakes</td>
+              <td>Open Now</td>
+              <td>San Leandro</td>
+              <td>(510)396-8194</td>
+              <td>*****</td>
+
+               
+            
+                
+
+            </tr>
+          </table>
+      </div>
+</section>
+
+</div>
 
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"

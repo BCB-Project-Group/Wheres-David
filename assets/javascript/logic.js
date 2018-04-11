@@ -1,3 +1,19 @@
+
+$(document).ready(function(){
+  $("#beerform").submit(function(event){
+    event.preventDefault()
+    var username = $("#username").val()
+    console.log(username)
+    var city = $("#city").val()
+    console.log(city)
+    var zipcode = $("#zipcode").val()
+    console.log(zipcode) 
+    var select = $("#state option:selected").text()
+    console.log(select)
+
+  })
+})
+
 function firebaseInit() {
   // Initialize Firebase
   firebase.initializeApp({
@@ -8,6 +24,7 @@ function firebaseInit() {
     storageBucket: "bcb-project-1-cd6d1.appspot.com",
     messagingSenderId: "561097617085"
   });
+
 
   window.db = firebase.database()
 }

@@ -3,8 +3,22 @@ h1 {
   font-size: 70px;
 }
 
-  h2{
+h2 {
   color: wheat;
+}
+
+label{
+  color: wheat;
+}
+
+button,select{
+  background: white;
+}
+
+button,html{
+  background: lightcyan;
+  line-height: 30px;
+  padding;10px;
 }
 
 .formlabels{
@@ -31,3 +45,10 @@ h1 {
   filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 
+body image {
+  opacity: 0.3;
+}
+
+.table {
+  background-color: white;
+}

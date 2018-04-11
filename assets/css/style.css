@@ -14,3 +14,14 @@
     margin-left: 20%;
     margin-right: 20%;
 }
+#jumbotron{
+  background-color: #ffffff;
+  opacity: 0.3;
+  border: 1px solid black;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+.h1,h2,username,city,state{
+  color: wheat;
+}

@@ -7,7 +7,7 @@ $(document).ready(function () {
   firebaseInit();
   createCommon();
   checkDatabase();
-  beerFormListener();
+  getLocation();
 });
 
 function firebaseInit() {
@@ -25,19 +25,6 @@ function firebaseInit() {
   window.db = firebase.database();
 }
 
-function beerFormListener() {
-  //event listener for search form
-
-  $("#beerform").submit(function (event) {
-    event.preventDefault();
-    window.formInputs = {
-      userName: $("#username").val().trim(),
-      city: $("#city").val().trim(),
-      zipCode: $("#zipcode").val().trim,
-      select: $("#state option:selected").text()
-    }
-  });
-}
 
 function createCommon() {
   //setup commonly used values
@@ -56,12 +43,12 @@ function checkDatabase() {
   if (typeof localStorage.username !== "undefined") {
     window.userData.name = localStorage.username;
     db.ref(`/users/${window.userData.name}`).once("value").then(snap => {
-       if (snap.val() !== null) {
-         console.log("exists");
-       }
-       else {
-         localStorage.usetname = undefined;
-       }
+      if (snap.val() !== null) {
+        console.log("exists");
+      }
+      else {
+        localStorage.username = undefined;
+      }
     })
   }
 }
@@ -70,21 +57,26 @@ function checkDatabase() {
 function getLocation() {
   //get user location and store in local/firebase
 
-  $.ajax({
-    url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
-    method: "GET"
-  }).then(response => {
+  if (typeof localStorage.location === "undefined") {
 
-    window.location = {
-      city: response.city,
-      state: response.state,
-      zip: response.zip,
-      lat: response.latitude,
-      lon: response.longitude
-    };
 
-    localStorage.location = JSON.stringify(window.location);
+    $.ajax({
+      url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
+      method: "GET"
+    }).then(response => {
 
-  });
+      window.userData.location = {
+        city: response.city,
+        state: response.region_name,
+        zip: response.zip,
+        lat: response.latitude,
+        lon: response.longitude
+      };
+
+      console.log(userData);
+
+      localStorage.location = JSON.stringify(window.userData.location);
+    })
+  }
 }
 

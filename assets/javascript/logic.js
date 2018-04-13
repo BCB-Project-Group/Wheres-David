@@ -6,6 +6,7 @@
 $(document).ready(function () {
   firebaseInit();
   createCommon();
+  checkDatabase();
   beerFormListener();
 });
 
@@ -49,7 +50,6 @@ function createCommon() {
   window.dbRef = {
     users: db.ref("/users")
   };
-
 }
 
 function checkDatabase() {

@@ -3,8 +3,7 @@
 $(document).ready(function () {
   firebaseInit();
   createCommon();
-  // checkDatabase();
-  displaySwitch();
+  initialCheck();
 });
 
 
@@ -14,9 +13,12 @@ $(document).ready(function () {
 function displaySwitch() {
   //main display manipulations
 
+  stateSwitch();
+
   function signInFade() {
     //effect on first time login
 
+    $(".sign").css("display", "none");
     $("#sign-in").css("display", "block");
     $("#sign-in-banner-1").fadeIn(750, () => {
       setTimeout(() => {
@@ -30,8 +32,16 @@ function displaySwitch() {
     });
   }
 
+  function stateSwitch() {
+    //dispatcher window.state
 
-  signInFade()
+
+    switch(state) {
+      case "signIn":
+        signInFade();
+        break
+    }
+  }
 }
 
 
@@ -53,17 +63,21 @@ function firebaseInit() {
 }
 
 function storeUser(input) {
-  window.userData.name = input;
-  localStorage.location = JSON.stringify(userData.location);
-  localStorage.username = input;
   console.log("storeUser");
   try {
-    db.ref(`/users/${input}`).set({
+    dbRef.user = db.ref(`/users/${input}`);
+    dbRef.user.set({
       username: input,
-      location: userData.location
-    })
+      location: userData.location,
+      favorites: JSON.stringify(userData.favorites)
+    });
+    userData.name = input;
+    localStorage.location = JSON.stringify(userData.location);
+    localStorage.username = input;
+
   }
   catch(err) {
+    console.log("waiting...");
     setTimeout(() => {
       storeUser(input)
     }, 500);
@@ -95,7 +109,7 @@ function getLocation() {
 }
 
 
-// information storage and retrieval
+// application logic
 
 function createCommon() {
   //setup commonly used values
@@ -108,6 +122,7 @@ function createCommon() {
   window.dbRef = {
     users: db.ref("/users")
   };
+
 
   window.listeners = {
 
@@ -132,7 +147,30 @@ function createCommon() {
       });
     }
   };
+}
 
+function initialCheck() {
+  // check if user is signed in
+
+  if(typeof localStorage.username !== "undefined") {
+    let user = localStorage.username;
+    db.ref(`/users/${user}`).once("value").then(snap => {
+      if (snap.exists()) {
+        userData.name = snap.val().username;
+        userData.location = snap.val().location;
+        userData.favorites = snap.val().favorites;
+        window.state = "home"
+      }
+      else {
+        window.state = "signIn";
+      }
+      displaySwitch();
+    })
+  }
+  else {
+    window.state = "signIn";
+    displaySwitch();
+  }
 }
 
 //cheatcodes

@@ -5,38 +5,44 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="assets/css/bootstrap.css" type="text/css" rel="stylesheet"/>
   <link href="assets/css/style.css" type="text/css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
 <body background='assets/beer.jpg'>
 
-<div class="container-fluid w-100">
+<header class="container-fluid w-100">
   <div class="jumbotron text-center">
-    <div class="row justify-content-center">
-      <h1>welcome to where's david?</h1>
+    <div class="row justify-content-center h1">
+      <p>welcome to where's david?</p>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center h2">
       <p>Find Your Local Craft Breweries!</p>
     </div>
   </div>
-</div>
+</header>
 
-<div class="container" id="container1">
-  <div class="row">
-    <div class="col">
-      <h1 class="welcome text-center">Login to find your</h1>
+<!--sign in display-->
+<section class="container" id="sign-in">
+
+  <!--Title jumbo-->
+  <div class="row ">
+    <div class="col-12">
+      <div class="row">
+        <div class="col">
+          <h1 class="welcome text-center">Login to find your</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h1 class="welcome text-center"> local breweries!</h1>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <h1 class="welcome text-center"> local breweries!</h1>
-    </div>
-  </div>
+
   <div class="row justify-content-center">
     <div class="card card-container">
-      <hr>
       <form class="form-signin">
         <span id="reauth-email" class="reauth-email"></span>
         <p class="input_title">User Name</p>
@@ -47,9 +53,9 @@
       </form>
     </div>
   </div>
-</div>
+</section>
 
-<div class="container" id="container2">
+<section class="container" id="container2">
   <div class="col-md-3">
     <form class="navbar-form" role="search">
       <div class="input-group add-on">
@@ -84,18 +90,17 @@
           <td>****</td>
           <td>Whoo!</td>
         </tr>
-        </tr>
         </tbody>
       </table>
     </div>
+  </div>
+</section>
 
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-    <script src="assets/javascript/logic.js"></script>
-
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script src="assets/javascript/logic.js"></script>
 </body>
 </html>

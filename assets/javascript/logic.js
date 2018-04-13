@@ -100,7 +100,8 @@ function createCommon() {
     signIn: () => {
 
       $("#sign-in-form").on("submit", event => {
-
+        let input = $("#username").val();
+        
       })
     }
   };

@@ -17,9 +17,11 @@ h1 {
   background: white;
 }
 
-td{
-  text-align: left;
+td {
+    text-align: left;
 }
+
+.welcome {text-shadow: 5px 4px 1px black;}
 
 
 /*@media screen and (min-width: 600px) {

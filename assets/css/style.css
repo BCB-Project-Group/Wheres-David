@@ -3,52 +3,22 @@ h1 {
   font-size: 70px;
 }
 
-h2 {
-  color: wheat;
-}
-
-label{
-  color: wheat;
-}
-
-button,select{
-  background: white;
-}
-
-button,html{
-  background: lightcyan;
-  line-height: 30px;
-  padding;10px;
-}
-
-.formlabels{
-	width: 35%;
-    text-align: center;
-    margin-left: 32.5%;
-    margin-right: 32.5%;
-}
-
 .container{
 	text-align: center;
 }
 
-.tableSection{
-	width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-}
-#jumbotron{
-  background-color: #ffffff;
-  opacity: 0.3;
-  border: 1px solid black;
-  opacity: 0.6;
-  filter: alpha(opacity=60); /* For IE8 and earlier */
-}
-
-body image {
-  opacity: 0.3;
-}
-
 .table {
   background-color: white;
+}
+
+@media screen and (min-width: 600px) {
+  .jumbotron {
+    font-size: 80px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .jumbotron {
+    font-size: 30px;
+  }
 }

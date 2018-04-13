@@ -4,9 +4,7 @@ $(document).ready(function () {
   firebaseInit();
   createCommon();
   // checkDatabase();
-  getLocation();
   displaySwitch();
-  displaySwitch()
 });
 
 
@@ -24,7 +22,8 @@ function displaySwitch() {
       setTimeout(() => {
         $("#sign-in-banner-2").fadeIn(750, () => {
           setTimeout(() => {
-            $("#sign-in-form").fadeIn(750)
+            $("#sign-in-form").fadeIn(750);
+            listeners.signIn()
         }, 250);
         })
       }, 250)
@@ -53,13 +52,31 @@ function firebaseInit() {
   window.db = firebase.database();
 }
 
+function storeUser(input) {
+  window.userData.name = input;
+  localStorage.location = JSON.stringify(userData.location);
+  localStorage.username = input;
+  console.log("storeUser");
+  try {
+    db.ref(`/users/${input}`).set({
+      username: input,
+      location: userData.location
+    })
+  }
+  catch(err) {
+    setTimeout(() => {
+      storeUser(input)
+    }, 500);
+  }
+}
+
 
 //api communication
 
 function getLocation() {
   //get user location and store in local/firebase
 
-  if (typeof localStorage.location === "undefined") {
+  // if (typeof localStorage.location === "undefined") {
 
     $.ajax({
       url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
@@ -73,11 +90,8 @@ function getLocation() {
         lat: response.latitude,
         lon: response.longitude
       };
-
-      console.log(userData);
-      localStorage.location = JSON.stringify(window.userData.location);
-    })
-  }
+    });
+  // }
 }
 
 
@@ -100,9 +114,22 @@ function createCommon() {
     signIn: () => {
 
       $("#sign-in-form").on("submit", event => {
+        event.preventDefault();
         let input = $("#username").val();
-        
-      })
+        dbRef.users.once("value").then(snap => {
+          if (snap.exists()) {
+            if(Object.keys(snap.val()).indexOf(input) < 0) {
+              getLocation();
+              storeUser(input)
+            }
+          }
+          else {
+            getLocation();
+            storeUser(input)
+          }
+        })
+
+      });
     }
   };
 

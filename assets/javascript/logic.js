@@ -134,3 +134,11 @@ function createCommon() {
   };
 
 }
+
+//cheatcodes
+
+function hardReset() {
+  db.ref().set({});
+  localStorage.clear();
+  location.reload()
+}

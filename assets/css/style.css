@@ -22,3 +22,7 @@ h1 {
     font-size: 30px;
   }
 }
+
+#container1 {
+  display: none;
+}

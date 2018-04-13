@@ -37,3 +37,9 @@ td{
   }
 }*/
 
+/* leaflet css */
+#mapid { 
+  height: 400px; 
+  width: 400px;
+}
+

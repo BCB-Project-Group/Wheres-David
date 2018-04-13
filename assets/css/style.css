@@ -1,0 +1,40 @@
+body {
+ font-family: "Arial Black", 'Gadget, sans-serif';
+}
+
+
+h1 {
+  color: wheat;
+  font-size: 70px;
+}
+
+.container{
+	text-align: center;
+}
+
+
+.table {
+  background: white;
+}
+
+td{
+  text-align: left;
+}
+
+
+@media screen and (min-width: 600px) {
+  .jumbotron {
+    font-size: 80px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .jumbotron {
+    font-size: 30px;
+  }
+}
+
+#container1 {
+  display: none;
+}
+

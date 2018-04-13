@@ -1,53 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--bootstrap here-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="assets/css/style.css" type="text/css" rel="stylesheet"/>
-    <title>Document</title>
+  <title>Where's David?</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="assets/css/style.css" type="text/css" rel="stylesheet"/>
 </head>
-<body>
+<body background= 'assets/beer.jpg'>
 
-<div class="jumbotron">
-    <h1>Where's David?</h1>
+<div class="jumbotron text-center">
+  <h1>Welcome to Where's David?</h1>
+  <p>Find Your Local Craft Breweries!</p> 
 </div>
 
-<div class="page-header">
-  <h1>Find Your Local Craft Breweries!</h1>
+<div class="container", id = "container1">
+  <h1 class="welcome text-center">Login to find your <br> local breweries!</h1>
+      <div class="card card-container">
+        <hr>
+          <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <p class="input_title">User Name</p>
+                <input type="text" id="inputEmail" class="login_box" placeholder="DavidDrankTooMuchBeer" required autofocus>
+        </div>
+      <br>
+      <button class="btn btn-lg btn-primary" type="submit">Login</button>
+      <br>
+      </form>
+  </div>
 </div>
 
-<div class="page-intro">
-  <h2>Tell Us About Yourself</h2>
-</div>
+<div class="container", id= "container2">
+<div class="col-md-3">
+  <form class="navbar-form" role="search">
+    <div class="input-group add-on">
+      <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
+  </form>
 
-<section>
-  <form>
-      <div class="form-group">
-          <label for="exampleFormControlInput1">User ID</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1">
-          </div>
-              <div class="form-group">
-                  <label for="exampleFormControlInput2">User Location</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput2">
-              </div>
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Breweries Near You Results</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-   </div>
-</form>
-
-</section>
+<div class="container", id= "container3">
+    <h1 class="welcome text-center">Nearby Brewery Results!</h1>
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Location</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Yelp Star Rating</th>
+      <th scope="col">Add to Favorties</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Beer</td>
+      <td>Open</td>
+      <td>San Francisco</td>
+      <td>612-836-1932</td>
+      <td>****</td>
+      <td>Whoo!</td>
+    </tr>
+    </tr>
+  </tbody>
+</table>
+  </div>
 
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-<!--bootstrap js here-->
+
 <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 <script src="assets/javascript/logic.js"></script>
+
 </body>
 </html>

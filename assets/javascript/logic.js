@@ -66,3 +66,25 @@ function checkDatabase() {
   }
 }
 
+
+function getLocation() {
+  //get user location and store in local/firebase
+
+  $.ajax({
+    url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
+    method: "GET"
+  }).then(response => {
+
+    window.location = {
+      city: response.city,
+      state: response.state,
+      zip: response.zip,
+      lat: response.latitude,
+      lon: response.longitude
+    };
+
+    localStorage.location = JSON.stringify(window.location);
+
+  });
+}
+

@@ -22,7 +22,7 @@ td{
 }
 
 
-@media screen and (min-width: 600px) {
+/*@media screen and (min-width: 600px) {
   .jumbotron {
     font-size: 80px;
   }
@@ -32,9 +32,8 @@ td{
   .jumbotron {
     font-size: 30px;
   }
-}
-
-#container1 {
-  display: none;
-}
+  body {
+    color: pink;
+  }
+}*/
 

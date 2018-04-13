@@ -40,6 +40,8 @@ function createCommon() {
 }
 
 function checkDatabase() {
+  //check database for matching profile information and sync with client
+
   if (typeof localStorage.username !== "undefined") {
     window.userData.name = localStorage.username;
     db.ref(`/users/${window.userData.name}`).once("value").then(snap => {
@@ -59,7 +61,6 @@ function getLocation() {
 
   if (typeof localStorage.location === "undefined") {
 
-
     $.ajax({
       url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
       method: "GET"
@@ -74,7 +75,6 @@ function getLocation() {
       };
 
       console.log(userData);
-
       localStorage.location = JSON.stringify(window.userData.location);
     })
   }

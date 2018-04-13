@@ -9,53 +9,64 @@
   <link href="assets/css/style.css" type="text/css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
-<body background='assets/beer.jpg'>
+<body background=''>
 
-<header class="container-fluid w-100">
-  <div class="jumbotron text-center">
-    <div class="row justify-content-center h1">
-      <p>welcome to where's david?</p>
+<!--persistent header-->
+
+<header class="jumbotron container-fluid" style="display: none">
+  <div class="row justify-content-center">
+    <div class="text-center col text-dark">
+      <h1>where's david?</h1>
     </div>
-    <div class="row justify-content-center h2">
-      <p>Find Your Local Craft Breweries!</p>
+  </div>
+  <div class="row justify-content-center">
+    <div class="text-center col text-dark">
+      <h2>Find Your Local Craft Breweries!</h2>
     </div>
   </div>
 </header>
 
 <!--sign in display-->
-<section class="container" id="sign-in">
+<section class="container" id="sign-in" style="display: none">
 
   <!--Title jumbo-->
-  <div class="row ">
+  <div class="row mt-5">
     <div class="col-12">
-      <div class="row">
-        <div class="col">
-          <h1 class="welcome text-center">Login to find your</h1>
+      <div class="row justify-content-center mt-5">
+        <div class="text-center col-auto text-dark p-3" id="sign-in-banner-1" style="display: none">
+          <h1>where's david?</h1>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <h1 class="welcome text-center"> local breweries!</h1>
+      <div class="row justify-content-center">
+        <div class="col-auto p-3 text-center text-dark mt-5" id="sign-in-banner-2" style="display: none">
+          <h2 class="welcome text-center text-dark">Log in to find out</h2>
         </div>
       </div>
+      <!--<div class="row">-->
+        <!--<div class="col text-center color-text">-->
+          <!--<h1 class="welcome text-center">4 the brews</h1>-->
+        <!--</div>-->
+      <!--</div>-->
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="card card-container">
-      <form class="form-signin">
-        <span id="reauth-email" class="reauth-email"></span>
-        <p class="input_title">User Name</p>
-        <input type="text" id="inputEmail" class="login_box" placeholder="DavidDrankTooMuchBeer" required autofocus>
-        <br>
-        <button class="btn btn-lg btn-primary" type="submit">Login</button>
-        <br>
-      </form>
-    </div>
+  <!--sign in plane-->
+  <div class="row justify-content-center mt-5" id="sign-in-form" style="display: none">
+    <form class="form-group card col-auto border-0">
+      <div class="row justify-content-center p-2">
+      <div class="col-auto text-right h2">
+          <p>Username:</p>
+        </div>
+        <div class="col-auto h2">
+          <input class="m-auto " title="username" type="text" value="notDavid404" id="username" style="color: gray;"/>
+        </div>
+      </div>
+    </form>
   </div>
+
 </section>
 
-<section class="container" id="container2">
+<section class="container" id="container2" style="display: none">
   <div class="col-md-3">
     <form class="navbar-form" role="search">
       <div class="input-group add-on">
@@ -96,11 +107,11 @@
   </div>
 </section>
 
-  <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-  <script src="assets/javascript/logic.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script src="assets/javascript/logic.js"></script>
 </body>
 </html>

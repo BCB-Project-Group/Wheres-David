@@ -1,1 +1,4 @@
-# Wheres-David
+//api-info
+//ipTracker: git@github.com: aa06ff996ecd0ae05b9bfb880e62c341
+//beermap: 1d0dec692e53fe232ce728a7b7212c52
+//yelp: IzZ34FIAMNva9johakunbjMVmTw3ZbRFXiu6ved7JaPnIkUUFBW5BUm_Hxt9A9fZVlBfPovlADmb3VVd8htA9qi98Ncg7ZaT6TShP7pagsvJ95suo5fg63vR5A7JWnYx

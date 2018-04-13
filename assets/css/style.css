@@ -4,8 +4,14 @@ font-family: 'Anton', sans-serif;
 
 
 h1 {
-  color: wheat;
-  font-size: 70px;
+    font-size: 70px;
+}
+
+h2 {
+    font-size: 50px;
+}
+.color-text {
+    color: wheat;
 }
 
 .container{
@@ -21,7 +27,6 @@ td {
     text-align: left;
 }
 
-.welcome {text-shadow: 5px 4px 1px black;}
 
 
 /*@media screen and (min-width: 600px) {

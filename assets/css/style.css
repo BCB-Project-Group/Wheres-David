@@ -4,8 +4,32 @@ font-family: 'Anton', sans-serif;
 
 
 h1 {
-  color: wheat;
-  font-size: 70px;
+    font-size: 70px;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+aside {
+
+    background: white;
+    position: absolute;
+    height: 100%;
+    width: 200px;
+    right: 0;
+}
+
+#wrapper {
+    height: 166px;
+}
+
+
+.jumbotron {background: #ffffff70;}
+
+
+.color-text {
+    color: wheat;
 }
 
 .container{
@@ -17,10 +41,13 @@ h1 {
   background: white;
 }
 
-td{
-  text-align: left;
+td {
+    text-align: left;
 }
 
+#menu-toggle {
+  font-size: 20px;
+}
 
 /*@media screen and (min-width: 600px) {
   .jumbotron {

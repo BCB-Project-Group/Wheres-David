@@ -5,81 +5,159 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="assets/css/bootstrap.css" type="text/css" rel="stylesheet"/>
+  <link type="text/css" rel="stylesheet" href="assets/css/sidebar.css"/>
   <link href="assets/css/style.css" type="text/css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
-<body background= 'assets/beer.jpg'>
+<body background=''>
 
-<div class="jumbotron text-center">
-  <h1>Welcome to Where's David?</h1>
-  <p>Find Your Local Craft Breweries!</p> 
-</div>
+<!--persistent header-->
 
-<div class="container", id = "container1">
-  <h1 class="welcome text-center">Login to find your <br> local breweries!</h1>
-      <div class="card card-container">
-        <hr>
-          <form class="form-signin">
-                <span id="reauth-email" class="reauth-email"></span>
-                <p class="input_title">User Name</p>
-                <input type="text" id="inputEmail" class="login_box" placeholder="DavidDrankTooMuchBeer" required autofocus>
-        </div>
-      <br>
-      <button class="btn btn-lg btn-primary" type="submit">Login</button>
-      <br>
-      </form>
-  </div>
-</div>
-
-<div class="container", id= "container2">
-<div class="col-md-3">
-  <form class="navbar-form" role="search">
-    <div class="input-group add-on">
-      <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-      <div class="input-group-btn">
-        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-      </div>
+<header class="jumbotron container-fluid mb-0 p-1" style="display: none">
+  <div class="row justify-content-center">
+    <div class="text-center col text-dark">
+      <h1>Where's David?</h1>
+      <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
     </div>
-  </form>
+  </div>
+  <!--<div class="row justify-content-center">-->
+  <!--<div class="text-center col text-dark">-->
+  <!--<h2>Find Your Local Craft Breweries!</h2>-->
+  <!--</div>-->
+  <!--</div>-->
+</header>
 
-<div class="container", id= "container3">
-    <h1 class="welcome text-center">Nearby Brewery Results!</h1>
-    <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Status</th>
-      <th scope="col">Location</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Yelp Star Rating</th>
-      <th scope="col">Add to Favorties</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Beer</td>
-      <td>Open</td>
-      <td>San Francisco</td>
-      <td>612-836-1932</td>
-      <td>****</td>
-      <td>Whoo!</td>
-    </tr>
-    </tr>
-  </tbody>
-</table>
+
+<section class="container" id="sign-in" style="display: none">
+
+  <!--Title jumbo-->
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="row justify-content-center mt-5">
+        <div class="text-center col-auto text-dark p-3 sign" id="sign-in-banner-1">
+          <h1>Where's David?</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-auto p-3 text-center text-dark mt-5 sign" id="sign-in-banner-2">
+          <h2 class="welcome text-center text-dark">Log in to Find Out</h2>
+        </div>
+      </div>
+      <!--<div class="row">-->
+      <!--<div class="col text-center color-text">-->
+      <!--<h1 class="welcome text-center">4 the brews</h1>-->
+      <!--</div>-->
+      <!--</div>-->
+    </div>
   </div>
 
-<script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+  <!--sign in plane-->
+  <div class="row justify-content-center mt-5 sign" id="sign-in-form">
+    <form class="form-group card col-auto border-0">
+      <div class="row justify-content-center p-2">
+        <div class="col-auto text-right h2">
+          <p>Username:</p>
+        </div>
+        <div class="col-auto h2">
+          <input class="m-auto " title="username" type="text" value="notDavid404" id="username" style="color: gray;"/>
+        </div>
+      </div>
+    </form>
+  </div>
 
+</section>
+
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#">
+          Menu
+        </a>
+      </li>
+      <li>
+        <a href="#">About Us</a>
+      </li>
+      <li>
+        <a href="#">Favorites</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <!--home section-->
+    <section class="container" id="home" style="display: none">
+      <div class="row justify-content-center mt-5">
+        <form class="navbar-form col-12" role="search">
+          <div class="input-group add-on ">
+            <div class="">
+              <input class="input" placeholder="Search" name="srch-term" id="srch-term" type="text">
+              <button class="input-group-btn btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="container" id="container3">
+        <h1 class="welcome text-center color-text">Nearby Brewery Results!</h1>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Location</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Yelp Star Rating</th>
+            <th scope="col">Add to Favorties</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Beer</td>
+            <td>Open</td>
+            <td>San Francisco</td>
+            <td>612-836-1932</td>
+            <td>****</td>
+            <td>Whoo!</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 <script src="assets/javascript/logic.js"></script>
-
 </body>
 </html>

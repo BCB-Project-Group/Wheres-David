@@ -40,7 +40,15 @@ function displaySwitch() {
     $("#home").fadeIn(750)
   }
 
+  function searchFade() {
+    checkHeader();
+    $("#search").fadeIn(750)
+  }
 
+  function aboutFade() {
+    checkHeader();
+    $("#about").fadeIn(750)
+  }
 
   function checkHeader() {
     if (!window.header) {
@@ -61,6 +69,13 @@ function displaySwitch() {
         break;
       case "home":
         homeFade();
+        break;
+      case "search":
+        searchFade();
+        break;
+      case "favorites":
+        aboutFade();
+        break;
     }
   }
 }

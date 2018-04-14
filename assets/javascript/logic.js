@@ -35,8 +35,21 @@ function displaySwitch() {
   }
 
   function homeFade() {
+    $("section").css("display", "none");
     checkHeader();
-    $("#home").fadeIn(750)
+    $("#home").fadeIn(750);
+  }
+
+  function aboutFade() {
+    $("section").css("display", "none");
+    checkHeader();
+    $("#home").fadeIn(750);
+  }
+
+  function searchfade() {
+    $("section").css("display", "none");
+    checkHeader();
+    $("#home").fadeIn(750);
   }
 
   function checkHeader() {

@@ -135,6 +135,12 @@ function getLocation() {
 function createCommon() {
   //setup commonly used values
 
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    console.log("bar toggle");
+    $("#wrapper").toggleClass("toggled");
+  });
+
   window.header = false;
 
   window.userData = {

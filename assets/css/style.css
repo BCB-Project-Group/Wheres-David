@@ -11,9 +11,22 @@ h2 {
     font-size: 50px;
 }
 
+aside {
+
+    background: white;
+    position: absolute;
+    height: 100%;
+    width: 200px;
+    right: 0;
+}
+
+#wrapper {
+    height: 166px;
+}
+
+
 .jumbotron {background: #ffffff70;}
 
-header.jumbotron.container-fluid {}
 
 .color-text {
     color: wheat;

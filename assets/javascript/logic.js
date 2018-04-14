@@ -4,6 +4,7 @@ $(document).ready(function () {
   firebaseInit();
   createCommon();
   initialCheck();
+  listeners.sideBar()
 });
 
 
@@ -28,7 +29,7 @@ function displaySwitch() {
           setTimeout(() => {
             $("#sign-in-form").fadeIn(750);
             listeners.signIn()
-        }, 250);
+          }, 250);
         })
       }, 250)
     });
@@ -38,6 +39,8 @@ function displaySwitch() {
     checkHeader();
     $("#home").fadeIn(750)
   }
+
+
 
   function checkHeader() {
     if (!window.header) {
@@ -58,7 +61,6 @@ function displaySwitch() {
         break;
       case "home":
         homeFade();
-
     }
   }
 }
@@ -113,19 +115,19 @@ function getLocation() {
 
   // if (typeof localStorage.location === "undefined") {
 
-    $.ajax({
-      url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
-      method: "GET"
-    }).then(response => {
+  $.ajax({
+    url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
+    method: "GET"
+  }).then(response => {
 
-      window.userData.location = {
-        city: response.city,
-        state: response.region_name,
-        zip: response.zip,
-        lat: response.latitude,
-        lon: response.longitude
-      };
-    });
+    window.userData.location = {
+      city: response.city,
+      state: response.region_name,
+      zip: response.zip,
+      lat: response.latitude,
+      lon: response.longitude
+    };
+  });
   // }
 }
 
@@ -174,6 +176,36 @@ function createCommon() {
         })
 
       });
+    },
+
+    sideBar: () => {
+
+      let a = $("a");
+      a.on("click", function(event) {
+        event.preventDefault();
+        let clicked = $(this);
+        console.log(clicked.attr("data-dir"));
+
+        switch(clicked.attr("data-dir")) {
+          case "about":
+            window.state = "about";
+            displaySwitch();
+            break;
+          case "search":
+            window.state = "search";
+            displaySwitch();
+            break;
+          case "favorites":
+            window.state = "favorites";
+            displaySwitch();
+            break;
+          case "home":
+            window.state = "home";
+            displaySwitch();
+            break;
+        }
+      })
+
     }
   };
 }

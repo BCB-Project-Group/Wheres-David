@@ -45,7 +45,9 @@ td {
     text-align: left;
 }
 
-
+#menu-toggle {
+  font-size: 20px;
+}
 
 /*@media screen and (min-width: 600px) {
   .jumbotron {

@@ -10,6 +10,11 @@ h1 {
 h2 {
     font-size: 50px;
 }
+
+.jumbotron {background: #ffffff70;}
+
+header.jumbotron.container-fluid {}
+
 .color-text {
     color: wheat;
 }

@@ -13,17 +13,17 @@
 
 <!--persistent header-->
 
-<header class="jumbotron container-fluid" style="display: none">
+<header class="jumbotron container-fluid p-1" style="display: none">
   <div class="row justify-content-center">
     <div class="text-center col text-dark">
       <h1>where's david?</h1>
     </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="text-center col text-dark">
-      <h2>Find Your Local Craft Breweries!</h2>
-    </div>
-  </div>
+  <!--<div class="row justify-content-center">-->
+  <!--<div class="text-center col text-dark">-->
+  <!--<h2>Find Your Local Craft Breweries!</h2>-->
+  <!--</div>-->
+  <!--</div>-->
 </header>
 
 <!--sign in display-->
@@ -43,9 +43,9 @@
         </div>
       </div>
       <!--<div class="row">-->
-        <!--<div class="col text-center color-text">-->
-          <!--<h1 class="welcome text-center">4 the brews</h1>-->
-        <!--</div>-->
+      <!--<div class="col text-center color-text">-->
+      <!--<h1 class="welcome text-center">4 the brews</h1>-->
+      <!--</div>-->
       <!--</div>-->
     </div>
   </div>
@@ -54,7 +54,7 @@
   <div class="row justify-content-center mt-5 sign" id="sign-in-form">
     <form class="form-group card col-auto border-0">
       <div class="row justify-content-center p-2">
-      <div class="col-auto text-right h2">
+        <div class="col-auto text-right h2">
           <p>Username:</p>
         </div>
         <div class="col-auto h2">
@@ -66,44 +66,50 @@
 
 </section>
 
-<section class="container" id="container2" style="display: none">
-  <div class="col-md-3">
-    <form class="navbar-form" role="search">
-      <div class="input-group add-on">
-        <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-        <div class="input-group-btn">
+<!--home section-->
+<section class="container" id="home" style="display: none">
+  <div class="row justify-content-center mt-5">
+    <form class="navbar-form col-12" role="search">
+      <div class="input-group add-on ">
+        <div class="">
+          <input class="input" placeholder="Search" name="srch-term" id="srch-term" type="text">
+        </div>
+        <div class="input-group-btn ">
           <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
         </div>
+
       </div>
     </form>
+  </div>
 
-    <div class="container" id="container3">
-      <h1 class="welcome text-center">Nearby Brewery Results!</h1>
-      <table class="table table-hover">
-        <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Status</th>
-          <th scope="col">Location</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Yelp Star Rating</th>
-          <th scope="col">Add to Favorties</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Beer</td>
-          <td>Open</td>
-          <td>San Francisco</td>
-          <td>612-836-1932</td>
-          <td>****</td>
-          <td>Whoo!</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="container" id="container3">
+    <h1 class="welcome text-center color-text">Nearby Brewery Results!</h1>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Location</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Yelp Star Rating</th>
+        <th scope="col">Add to Favorties</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Beer</td>
+        <td>Open</td>
+        <td>San Francisco</td>
+        <td>612-836-1932</td>
+        <td>****</td>
+        <td>Whoo!</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
   </div>
 </section>
 

@@ -18,6 +18,8 @@ function displaySwitch() {
   function signInFade() {
     //effect on first time login
 
+    window.header = false;
+
     $(".sign").css("display", "none");
     $("#sign-in").css("display", "block");
     $("#sign-in-banner-1").fadeIn(750, () => {
@@ -32,14 +34,31 @@ function displaySwitch() {
     });
   }
 
+  function homeFade() {
+    checkHeader();
+    $("#home").fadeIn(750)
+  }
+
+  function checkHeader() {
+    if (!window.header) {
+      $("body").attr("background", "assets/images/beer.jpg");
+      $("header").fadeIn(750);
+      window.header = true;
+    }
+  }
+
   function stateSwitch() {
     //dispatcher window.state
 
 
+    $("section").css("display", "none");
     switch(state) {
       case "signIn":
         signInFade();
-        break
+        break;
+      case "home":
+        homeFade();
+
     }
   }
 }
@@ -74,6 +93,8 @@ function storeUser(input) {
     userData.name = input;
     localStorage.location = JSON.stringify(userData.location);
     localStorage.username = input;
+    window.state = "home";
+    displaySwitch()
 
   }
   catch(err) {
@@ -113,6 +134,8 @@ function getLocation() {
 
 function createCommon() {
   //setup commonly used values
+
+  window.header = false;
 
   window.userData = {
     name: undefined,
@@ -159,6 +182,7 @@ function initialCheck() {
         userData.name = snap.val().username;
         userData.location = snap.val().location;
         userData.favorites = snap.val().favorites;
+        window.dbRef.user = db.ref(`/users/${user}`);
         window.state = "home"
       }
       else {

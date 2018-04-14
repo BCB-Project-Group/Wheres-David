@@ -45,6 +45,11 @@ function displaySwitch() {
     $("#search").fadeIn(750)
   }
 
+  function favoritesFade() {
+    checkHeader();
+    $("#favorites").fadeIn(750)
+  }
+
   function aboutFade() {
     checkHeader();
     $("#about").fadeIn(750)
@@ -74,6 +79,9 @@ function displaySwitch() {
         searchFade();
         break;
       case "favorites":
+        aboutFade();
+        break;
+      case "about":
         aboutFade();
         break;
     }

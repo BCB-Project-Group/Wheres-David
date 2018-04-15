@@ -50,74 +50,11 @@ td {
 }
 
 
-html{
-  box-sizing:border-box;
-  margin: 0;
-  padding: 0;
-
-}
-
- *, *:before,*:after { box-sizing: inherit; margin: 0; padding: 0; 
-}
-
-header,footer,h1,h2,h3,h4,div,p,aside,section,main,ol,ul,li{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 100%;
-  border: 0;
-
-}
-
-body{
-  
-
-
-}
 
 
 
-header{
-  position: relative;
-  background-color: #111;
-  border-color: #cccccc;
-  color: white;
-  font-size: 100%;
-  padding: 0 0 0em 10em;
-  
-}
 
-header h1{
-  background: #4aaaa5;
-  display: inline-block;
-  font-size: 200%;
-  padding: 0.8em;
-  
-
-}
-
-header ul{
-  position: absolute;
-  right: 22.2em;
-  top: 2em;
-  list-style: none;
-
-}
-
-header ul li{
-  
-  display: inline-block;
-  color:#aaa;
-  font-size: 18px;
-
-  padding: 0 0.7em;
-}
-
-body{
-background: #111;
-}
-
-main label{
+.contact-label{
   display: block;
   margin: 1em 1em .25em 1em;
   padding: 0 0 0 0em;
@@ -125,7 +62,7 @@ main label{
 
 }
 
-input[type="submit"]{
+.contact-input[type="submit"]{
   display: block;
   margin: 1em 0em;
   font-size: 16px;
@@ -137,7 +74,7 @@ input[type="submit"]{
 
 } 
 
-input[type="text"], textarea{
+.contact-input[type="text"], textarea{
   display: block;
   margin: 0 0;
   width: 25em;
@@ -147,22 +84,16 @@ input[type="text"], textarea{
   
 }
 
-form{
+#contact {
   padding: 1em;
   position: relative;
   right: 1em;
+  float: left;
 }
 
-form label{
+#contact .contact-label {
   position: relative;
   right: 1em;
-}
-
-section p{
-  color: #fff;
-  font-weight: bold;
-  font-size: 18px;
-  text-align: center;
 }
 
 #picture{
@@ -172,36 +103,26 @@ section p{
 
 #contact{
   position: relative;
-  left: 15em;
-}
-}
-
-
-
-main{
-  padding: 2em 0 2em 10em;
-  position: relative;
-  background-image:url("../images/concrete.png");
-  border-top: 2px solid #ccc;
-
+  /* left: 15em; */
 }
 
-main h1{
-  font-family: "arial";
-  font-size: 26px;
+
+
+
+#about {
   color:#d73;
   border-bottom: 2.5px solid #ddd;
   padding: .30em 0 .75em 0;
   text-align: center;
 }
 
-main div{
+#about #contact-box{
   background-color:#eee;
   display: inline-block;
   padding: 2em 2em 0em;
   border-radius: 10%;
   position: relative;
   left: 8em;
-  
+
 }
 

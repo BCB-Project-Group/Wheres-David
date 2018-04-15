@@ -11,10 +11,22 @@ $(document).ready(function () {
 //Jquery Functions
 
 
+
+
 function displaySwitch() {
   //main display manipulations
 
   stateSwitch();
+
+  function viewPortScale() {
+    //set wrapper height based off of viewport
+
+    console.log($(window).height());
+    console.log($("header").height())
+    console.log($("#wrapper").height())
+    $("#wrapper").height($(window).height() - $("header").height());
+    console.log($("#wrapper").height())
+  }
 
   function signInFade() {
     //effect on first time login
@@ -66,6 +78,7 @@ function displaySwitch() {
   function stateSwitch() {
     //dispatcher window.state
 
+    viewPortScale();
 
     $("section").css("display", "none");
     switch(state) {

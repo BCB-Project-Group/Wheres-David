@@ -8,6 +8,7 @@
   <link href="assets/css/bootstrap.css" type="text/css" rel="stylesheet"/>
   <link type="text/css" rel="stylesheet" href="assets/css/sidebar.css"/>
   <link href="assets/css/style.css" type="text/css" rel="stylesheet"/>
+  <link type="text/css" rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
 <body background=''>
@@ -166,40 +167,40 @@
     </section>
 
     <!--about page-->
-    <section class="container"  id="about" style="display: none">
+  <section class="container w-100"  id="about" style="overflow: auto;">
 
-      <h1>About Us</h1>
+    <h1>About Us</h1>
 
-      <img id="picture" src="assets/images/youngpeople.jpg">
-
-
-      <p> We were inspired by David missing class on a couple Saturdays ago due to a hangover, and it inspired us to make
-        the world a better place by giving people the option to feel a good buzz by visiting breweries in the area of
-        their choice.</p>
+    <img id="picture" src="assets/images/youngpeople.jpg">
 
 
-      <div>
+    <p> We were inspired by David missing class on a couple Saturdays ago due to a hangover, and it inspired us to make
+      the world a better place by giving people the option to feel a good buzz by visiting breweries in the area of
+      their choice.</p>
 
-        <h1>Contact</h1>
 
-        <form>
-          <label for="name">Name</label>
-          <input type="text" name="name" placeholder="enter your name">
-          <label for="email">Email</label>
-          <input type="text" name="email" placeholder="enter your email">
-          <label for="message">Message</label>
-          <textarea name="message" placeholder="enter a message">
+    <div id="contact-box">
+
+      <h3>Contact</h3>
+
+      <form id="contact">
+        <label class="contact-label" for="name">Name</label>
+        <input class="contact-input" type="text" name="name" placeholder="enter your name">
+        <label class="contact-label" for="email">Email</label>
+        <input class="contact-input" type="text" name="email" placeholder="enter your email">
+        <label class="contact-label" for="message">Message</label>
+        <textarea name="message" placeholder="enter a message">
 
                </textarea>
 
-          <input type="submit" value="Submit">
+        <input type="submit" value="Submit">
 
 
-        </form>
+      </form>
 
-      </div>
+    </div>
 
-    </section>
+  </section>
   </div>
   <!-- /#page-content-wrapper -->
 

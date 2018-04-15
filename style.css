@@ -1,0 +1,128 @@
+body {
+font-family: 'Anton', sans-serif;
+}
+
+
+h1 {
+    font-size: 70px;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+aside {
+
+    background: white;
+    position: absolute;
+    height: 100%;
+    width: 200px;
+    right: 0;
+}
+
+#wrapper {
+    height: 166px;
+}
+
+
+.jumbotron {background: #ffffff70;}
+
+
+.color-text {
+    color: wheat;
+}
+
+.container{
+	text-align: center;
+}
+
+
+.table {
+  background: white;
+}
+
+td {
+    text-align: left;
+}
+
+#menu-toggle {
+  font-size: 20px;
+}
+
+
+
+
+
+
+.contact-label{
+  display: block;
+  margin: 1em 1em .25em 1em;
+  padding: 0 0 0 0em;
+  color: #aaa;
+
+}
+
+.contact-input[type="submit"]{
+  display: block;
+  margin: 1em 0em;
+  font-size: 16px;
+  padding: .5em;
+  background: #d73;
+  color: #fff;
+  border: none;
+   
+
+} 
+
+.contact-input[type="text"], textarea{
+  display: block;
+  margin: 0 0;
+  width: 25em;
+  font-size: 16px;
+  padding: .5em;
+
+  
+}
+
+#contact {
+  padding: 1em;
+  position: relative;
+  right: 1em;
+  float: left;
+}
+
+#contact .contact-label {
+  position: relative;
+  right: 1em;
+}
+
+#picture{
+  position: relative;
+  left: 15em;
+}
+
+#contact{
+  position: relative;
+  /* left: 15em; */
+}
+
+
+
+
+#about {
+  color:#d73;
+  border-bottom: 2.5px solid #ddd;
+  padding: .30em 0 .75em 0;
+  text-align: center;
+}
+
+#about #contact-box{
+  background-color:#eee;
+  display: inline-block;
+  padding: 2em 2em 0em;
+  border-radius: 10%;
+  position: relative;
+  left: 8em;
+
+}
+

@@ -1,5 +1,6 @@
 body {
-font-family: 'Anton', sans-serif;
+    font-family: 'Anton', sans-serif;
+    overflow: hidden;
 }
 
 
@@ -22,6 +23,7 @@ aside {
 
 #wrapper {
     height: 166px;
+    overflow: auto;
 }
 
 
@@ -63,4 +65,70 @@ td {
     color: pink;
   }
 }*/
+
+/*about styles*/
+
+
+.contact-label{
+    display: block;
+    margin: 1em 1em .25em 1em;
+    padding: 0 0 0 0em;
+    color: #aaa;
+
+}
+
+.contact-input[type="submit"]{
+    display: block;
+    margin: 1em 0em;
+    font-size: 16px;
+    padding: .5em;
+    background: #d73;
+    color: #fff;
+    border: none;
+
+
+}
+
+.contact-input[type="text"], textarea{
+    display: block;
+    margin: 0 0;
+    width: 25em;
+    font-size: 16px;
+    padding: .5em;
+
+
+}
+
+#contact {
+    padding: 1em;
+}
+
+#contact .contact-label {
+    position: relative;
+}
+
+#picture{
+}
+
+#contact{
+    /* left: 15em; */
+}
+
+
+
+
+#about {
+    color:wheat;
+    padding: .30em 0 .75em 0;
+    text-align: center;
+}
+
+#about #contact-box{
+    background-color:#eee;
+    display: inline-block;
+    padding: 2em 2em 0em;
+    border-radius: 10%;
+    position: relative;
+    /* left: 8em; */
+}
 

@@ -4,16 +4,25 @@ $(document).ready(function () {
   firebaseInit();
   createCommon();
   initialCheck();
+  listeners.sideBar()
 });
 
 
 //Jquery Functions
 
 
+
+
 function displaySwitch() {
   //main display manipulations
 
   stateSwitch();
+
+  function viewPortScale() {
+    //set wrapper height based off of viewport
+
+    $("#wrapper").height($(window).height() - $("header").height());
+  }
 
   function signInFade() {
     //effect on first time login
@@ -28,7 +37,7 @@ function displaySwitch() {
           setTimeout(() => {
             $("#sign-in-form").fadeIn(750);
             listeners.signIn()
-        }, 250);
+          }, 250);
         })
       }, 250)
     });
@@ -37,6 +46,21 @@ function displaySwitch() {
   function homeFade() {
     checkHeader();
     $("#home").fadeIn(750)
+  }
+
+  function searchFade() {
+    checkHeader();
+    $("#search").fadeIn(750)
+  }
+
+  function favoritesFade() {
+    checkHeader();
+    $("#favorites").fadeIn(750)
+  }
+
+  function aboutFade() {
+    checkHeader();
+    $("#about").fadeIn(750)
   }
 
   function checkHeader() {
@@ -50,6 +74,7 @@ function displaySwitch() {
   function stateSwitch() {
     //dispatcher window.state
 
+    viewPortScale();
 
     $("section").css("display", "none");
     switch(state) {
@@ -58,7 +83,17 @@ function displaySwitch() {
         break;
       case "home":
         homeFade();
-
+        break;
+      case "search":
+        searchFade();
+        break;
+      case "favorites":
+        favoritesFade();
+        break;
+      case "about":
+        console.log("bout");
+        aboutFade();
+        break;
     }
   }
 }
@@ -113,19 +148,19 @@ function getLocation() {
 
   // if (typeof localStorage.location === "undefined") {
 
-    $.ajax({
-      url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
-      method: "GET"
-    }).then(response => {
+  $.ajax({
+    url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
+    method: "GET"
+  }).then(response => {
 
-      window.userData.location = {
-        city: response.city,
-        state: response.region_name,
-        zip: response.zip,
-        lat: response.latitude,
-        lon: response.longitude
-      };
-    });
+    window.userData.location = {
+      city: response.city,
+      state: response.region_name,
+      zip: response.zip,
+      lat: response.latitude,
+      lon: response.longitude
+    };
+  });
   // }
 }
 
@@ -174,6 +209,36 @@ function createCommon() {
         })
 
       });
+    },
+
+    sideBar: () => {
+
+      let a = $("a");
+      a.on("click", function(event) {
+        event.preventDefault();
+        let clicked = $(this);
+        console.log(clicked.attr("data-dir"));
+
+        switch(clicked.attr("data-dir")) {
+          case "about":
+            window.state = "about";
+            displaySwitch();
+            break;
+          case "search":
+            window.state = "search";
+            displaySwitch();
+            break;
+          case "favorites":
+            window.state = "favorites";
+            displaySwitch();
+            break;
+          case "home":
+            window.state = "home";
+            displaySwitch();
+            break;
+        }
+      })
+
     }
   };
 }

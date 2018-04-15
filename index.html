@@ -15,10 +15,13 @@
 <!--persistent header-->
 
 <header class="jumbotron container-fluid mb-0 p-1" style="display: none">
-  <div class="row justify-content-center">
+  <div class="row justify-content-between">
+    <div class="col-auto"></div>
     <div class="text-center col text-dark">
       <h1>Where's David?</h1>
-      <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+    </div>
+    <div class="col-auto m-auto p-2">
+      <a href="#menu-toggle" class="btn btn-secondary mr-4 p-2 " id="menu-toggle">Menu</a>
     </div>
   </div>
   <!--<div class="row justify-content-center">-->
@@ -60,7 +63,7 @@
           <p>Username:</p>
         </div>
         <div class="col-auto h2">
-          <input class="m-auto " title="username" type="text" value="notDavid404" id="username" style="color: gray;"/>
+          <input class="m-auto " title="username" type="text" placeholder="notDavid404" id="username"/>
         </div>
       </div>
     </form>
@@ -79,13 +82,16 @@
         </a>
       </li>
       <li>
-        <a href="#">About Us</a>
+        <a href="#" data-dir="home">Home</a>
       </li>
       <li>
-        <a href="#">Favorites</a>
+        <a href="#" data-dir="about">About</a>
       </li>
       <li>
-        <a href="#">Contact</a>
+        <a href="#" data-dir="favorites">Favorites</a>
+      </li>
+      <li>
+        <a href="#" data-dir="search">Search</a>
       </li>
     </ul>
   </div>
@@ -93,19 +99,41 @@
 
   <!-- Page Content -->
   <div id="page-content-wrapper">
+  
+    <!-- Search Content -->
+    <section class="container" id="search">
+      <input class="input" placeholder="Search" name="srch-term" id="srch-term" type="text">
+      <button class="input-group-btn btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 
-    <!--home section-->
+      <h1 class="welcome text-center color-text">Nearby Brewery Results!</h1>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">Location</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Yelp Star Rating</th>
+          <th scope="col">Add to Favorites</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </section>
+
+    <!--Home section-->
     <section class="container" id="home" style="display: none">
       <div class="row justify-content-center mt-5">
         <form class="navbar-form col-12" role="search">
           <div class="input-group add-on ">
             <div class="">
-              <input class="input" placeholder="Search" name="srch-term" id="srch-term" type="text">
-              <button class="input-group-btn btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </div>
           </div>
         </form>
       </div>
+
 
       <div class="container" id="container3">
         <h1 class="welcome text-center color-text">Nearby Brewery Results!</h1>
@@ -137,6 +165,57 @@
 
     </section>
 
+    <!--about page-->
+  <section class="container w-100"  id="about">
+
+    <div class="row justify-content-center">
+      <div class="col-auto text-center">
+        <h1>About Us</h1>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-auto text-center">
+        <img id="picture" src="assets/images/youngpeople.jpg">
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-6 text-left">
+        <p> We were inspired by David missing class on a couple Saturdays ago due to a hangover, and it inspired us to make
+          the world a better place by giving people the option to feel a good buzz by visiting breweries in the area of
+          their choice.</p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6 text-left">
+        <div id="contact-box">
+
+          <h3>Contact</h3>
+
+          <form id="contact">
+            <label class="contact-label" for="name">Name</label>
+            <input class="contact-input" type="text" name="name" placeholder="enter your name">
+            <label class="contact-label" for="email">Email</label>
+            <input class="contact-input" type="text" name="email" placeholder="enter your email">
+            <label class="contact-label" for="message">Message</label>
+            <textarea name="message" placeholder="enter a message">
+
+               </textarea>
+
+            <input type="submit" value="Submit">
+
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </section>
   </div>
   <!-- /#page-content-wrapper -->
 

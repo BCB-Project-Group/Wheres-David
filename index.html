@@ -190,21 +190,62 @@
       <div class="col-6 text-left">
         <div id="contact-box">
 
-          <h3>Contact</h3>
+          <h3>Contact Us</h3>
 
-          <form id="contact">
-            <label class="contact-label" for="name">Name</label>
-            <input class="contact-input" type="text" name="name" placeholder="enter your name">
-            <label class="contact-label" for="email">Email</label>
-            <input class="contact-input" type="text" name="email" placeholder="enter your email">
-            <label class="contact-label" for="message">Message</label>
-            <textarea name="message" placeholder="enter a message">
-
-               </textarea>
-
-            <input type="submit" value="Submit">
-
-
+          <form name="htmlform" method="post" action="html_form_send.php">
+              <table width="550px">
+              </tr>
+              <tr>
+               <td valign="top">
+                <label for="first_name">First Name</label>
+               </td>
+               <td valign="top">
+                <input  type="text" name="first_name" maxlength="50" size="30">
+               </td>
+              </tr>
+          
+              <tr>
+               <td valign="top">
+                <label for="last_name">Last Name</label>
+               </td>
+               <td valign="top">
+                <input  type="text" name="last_name" maxlength="50" size="30">
+               </td>
+              </tr>
+              <tr>
+               <td valign="top">
+                <label for="email">Email Adress</label>
+               </td>
+               <td valign="top">
+                <input  type="text" name="email" maxlength="80" size="30">
+               </td>
+          
+              </tr>
+              <tr>
+               <td valign="top">
+                <label for="telephone">Phone Number</label>
+               </td>
+               <td valign="top">
+                <input  type="text" name="telephone" maxlength="30" size="30">
+               </td>
+              </tr>
+              <tr>
+               <td valign="top">
+                <label for="comments">Your Message</label>
+               </td>
+               <td valign="top">
+                <textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea>
+               </td>
+          
+              </tr>
+              <tr>
+               <td colspan="2" style="text-align:center">
+                <input type="submit" value="Submit">
+               </td>
+          
+              </tr>
+          
+              </table>
           </form>
 
         </div>

@@ -21,11 +21,7 @@ function displaySwitch() {
   function viewPortScale() {
     //set wrapper height based off of viewport
 
-    console.log($(window).height());
-    console.log($("header").height())
-    console.log($("#wrapper").height())
     $("#wrapper").height($(window).height() - $("header").height());
-    console.log($("#wrapper").height())
   }
 
   function signInFade() {

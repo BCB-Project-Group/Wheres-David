@@ -2,7 +2,7 @@
 if(isset($_POST['email'])) {
 
     // CHANGE THE TWO LINES BELOW
-    $email_to = "yaliu8@gmail.com ";
+    $email_to = "yaliu8@gmail.com";
 
     $email_subject = "Message from Contact";
 

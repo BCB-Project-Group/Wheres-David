@@ -101,23 +101,16 @@ td {
 
 #contact {
     padding: 1em;
-    position: relative;
-    right: 1em;
-    float: left;
 }
 
 #contact .contact-label {
     position: relative;
-    right: 1em;
 }
 
 #picture{
-    position: relative;
-    left: 15em;
 }
 
 #contact{
-    position: relative;
     /* left: 15em; */
 }
 
@@ -125,7 +118,7 @@ td {
 
 
 #about {
-    color:#d73;
+    color:wheat;
     padding: .30em 0 .75em 0;
     text-align: center;
 }
@@ -136,7 +129,6 @@ td {
     padding: 2em 2em 0em;
     border-radius: 10%;
     position: relative;
-    left: 8em;
-
+    /* left: 8em; */
 }
 

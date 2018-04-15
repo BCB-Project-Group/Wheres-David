@@ -4,13 +4,19 @@ $(document).ready(function () {
   firebaseInit();
   createCommon();
   initialCheck();
-  listeners.sideBar()
+  listeners.resize();
+  listeners.sideBar();
 });
 
 
 //Jquery Functions
 
 
+function viewPortScale() {
+  //set wrapper height based off of viewport
+  console.log("scaling...");
+  $("#wrapper").height($(window).height() - $("header").height());
+}
 
 
 function displaySwitch() {
@@ -18,11 +24,6 @@ function displaySwitch() {
 
   stateSwitch();
 
-  function viewPortScale() {
-    //set wrapper height based off of viewport
-
-    $("#wrapper").height($(window).height() - $("header").height());
-  }
 
   function signInFade() {
     //effect on first time login
@@ -98,6 +99,9 @@ function displaySwitch() {
   }
 }
 
+function displayBrews(target, offset) {
+
+}
 
 //Database Functions
 
@@ -161,7 +165,52 @@ function getLocation() {
       lon: response.longitude
     };
   });
-  // }
+}
+
+function getBrews(city, state) {
+  //search brews
+
+  function separateResults(response) {
+    //separate ajax response into sets of 20
+
+    let i = 0;
+    let tmp = [];
+    window.brews = {
+      offset: 0,
+      data: []
+    };
+
+    response.forEach((brew, index) => {
+
+      if (i < 20) {
+        tmp.push(brew);
+        i++;
+
+      if (index === response.length - 1) {
+          brews.data.push(tmp);
+        }
+      }
+
+      else {
+        brews.data.push(tmp);
+        tmp = [];
+        i = 0
+      }
+    });
+  }
+
+  let url = "http://beermapping.com/webservice/loccity/1d0dec692e53fe232ce728a7b7212c52/"
+    + city
+    + ","
+    + state
+    + "&s=json";
+
+  $.ajax({
+    url: url,
+    method: "GET"
+  }).then(response => {
+    separateResults(response)
+  });
 }
 
 
@@ -239,6 +288,13 @@ function createCommon() {
         }
       })
 
+    },
+
+    resize: () => {
+
+      $(window).on("resize",  () => {
+        viewPortScale()
+      })
     }
   };
 }

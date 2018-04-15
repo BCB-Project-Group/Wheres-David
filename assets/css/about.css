@@ -17,48 +17,11 @@ header,footer,h1,h2,h3,h4,div,p,aside,section,main,ol,ul,li{
 
 }
 
-
-header{
-  position: relative;
-  background-color: #111;
-  border-color: #cccccc;
-  color: white;
-  font-size: 100%;
-  padding: 0 0 0em 10em;
-  
-}
-
-header h1{
-  background: #4aaaa5;
-  display: inline-block;
-  font-size: 200%;
-  padding: 0.8em;
-  
-
-}
-
-header ul{
-  position: absolute;
-  right: 22.2em;
-  top: 2em;
-  list-style: none;
-
-}
-
-header ul li{
-  
-  display: inline-block;
-  color:#aaa;
-  font-size: 18px;
-
-  padding: 0 0.7em;
-}
-
-body{
+#about{
 background: #111;
 }
 
-main label{
+#contact-box label{
   display: block;
   margin: 1em 1em .25em 1em;
   padding: 0 0 0 0em;
@@ -66,7 +29,7 @@ main label{
 
 }
 
-input[type="submit"]{
+#contact-box input[type="submit"]{
   display: block;
   margin: 1em 0em;
   font-size: 16px;
@@ -78,7 +41,7 @@ input[type="submit"]{
 
 } 
 
-input[type="text"], textarea{
+#contact-box input[type="text"], textarea{
   display: block;
   margin: 0 0;
   width: 25em;
@@ -88,19 +51,19 @@ input[type="text"], textarea{
   
 }
 
-form{
+#contact-box form{
   padding: 1em;
   position: relative;
   right: 1em;
 }
 
-form label{
+#contact-box form label{
   position: relative;
   right: 1em;
 }
 
-section p{
-  color: #fff;
+#about section p{
+  color: #d73;
   font-weight: bold;
   font-size: 18px;
   text-align: center;
@@ -111,23 +74,14 @@ section p{
   left: 15em;
 }
 
-#contact{
+#contact-box{
   position: relative;
   left: 15em;
 }
-}
 
 
 
-main{
-  padding: 2em 0 2em 10em;
-  position: relative;
-  background-image:url("../images/concrete.png");
-  border-top: 2px solid #ccc;
-
-}
-
-main h1{
+#about h1{
   font-family: "arial";
   font-size: 26px;
   color:#d73;
@@ -136,7 +90,8 @@ main h1{
   text-align: center;
 }
 
-main div{
+
+#contact-box{
   background-color:#eee;
   display: inline-block;
   padding: 2em 2em 0em;

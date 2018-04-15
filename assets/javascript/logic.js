@@ -79,9 +79,10 @@ function displaySwitch() {
         searchFade();
         break;
       case "favorites":
-        aboutFade();
+        favoritesFade();
         break;
       case "about":
+        console.log("bout");
         aboutFade();
         break;
     }

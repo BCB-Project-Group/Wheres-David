@@ -17,7 +17,7 @@
 <header class="jumbotron container-fluid mb-0 p-1" style="display: none">
   <div class="row justify-content-between">
     <div class="col-auto"></div>
-    <div class="text-center col text-dark">
+    <div class="text-center col color-text">
       <h1>Where's David?</h1>
     </div>
     <div class="col-auto m-auto p-2">
@@ -47,11 +47,6 @@
           <h2 class="welcome text-center text-dark">Log in to Find Out</h2>
         </div>
       </div>
-      <!--<div class="row">-->
-      <!--<div class="col text-center color-text">-->
-      <!--<h1 class="welcome text-center">4 the brews</h1>-->
-      <!--</div>-->
-      <!--</div>-->
     </div>
   </div>
 
@@ -76,11 +71,6 @@
   <!-- Sidebar -->
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a href="#">
-          Menu
-        </a>
-      </li>
       <li>
         <a href="#" data-dir="home">Home</a>
       </li>
@@ -102,9 +92,13 @@
   
     <!-- Search Content -->
     <section class="container" id="search">
-      <input class="input" placeholder="Search" name="srch-term" id="srch-term" type="text">
-      <button class="input-group-btn btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
+            <input type="text"  class="form-control" placeholder="Search"/>
+        </div>
+        
       <h1 class="welcome text-center color-text">Nearby Brewery Results!</h1>
       <table class="table table-hover">
         <thead>
@@ -124,48 +118,25 @@
     </section>
 
     <!--Home section-->
+    <h2><div id="role"> Ale</div></h2>
+
     <section class="container" id="home" style="display: none">
       <div class="row justify-content-center mt-5">
-        <form class="navbar-form col-12" role="search">
-          <div class="input-group add-on ">
-            <div class="">
-            </div>
-          </div>
-        </form>
+        <div class="col-auto text-center" >
+          <h1 class="welcome color-text">Nearby Brewery Results!</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-12 results" id="home-results">
+
+        </div>
       </div>
 
 
-      <div class="container" id="container3">
-        <h1 class="welcome text-center color-text">Nearby Brewery Results!</h1>
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Status</th>
-            <th scope="col">Location</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Yelp Star Rating</th>
-            <th scope="col">Add to Favorties</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Beer</td>
-            <td>Open</td>
-            <td>San Francisco</td>
-            <td>612-836-1932</td>
-            <td>****</td>
-            <td>Whoo!</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
 
     </section>
 
-    <!--about page-->
+    <!--About page-->
   <section class="container w-100"  id="about">
 
     <div class="row justify-content-center">
@@ -190,32 +161,95 @@
       <div class="col-6 text-left">
         <div id="contact-box">
 
-          <h3>Contact</h3>
-
-          <form id="contact">
-            <label class="contact-label" for="name">Name</label>
-            <input class="contact-input" type="text" name="name" placeholder="enter your name">
-            <label class="contact-label" for="email">Email</label>
-            <input class="contact-input" type="text" name="email" placeholder="enter your email">
-            <label class="contact-label" for="message">Message</label>
-            <textarea name="message" placeholder="enter a message">
-
-               </textarea>
-
-            <input type="submit" value="Submit">
-
-
-          </form>
+<!-- Contact section -->
+    <h3>Contact Us</h3>
+      
+      <form name="htmlform" method="post" action="html_form_send.php">
+              <table width="550px">
+              </tr>
+              <tr>
+               <td valign="top">
+                <label for="first_name">First Name</label>
+               </td>
+               <td valign="top">
+                <input  type="text" name="first_name" maxlength="50" size="30">
+               </td>
+              </tr>
+          
+              <tr>
+               <td valign="top">
+                <label for="last_name">Last Name</label>
+               </td>
+               <td valign="top">
+                <input  type="text" name="last_name" maxlength="50" size="30">
+               </td>
+              </tr>
+              <tr>
+               <td valign="top">
+                <label for="email">Email Adress</label>
+               </td>
+               <td valign="top">
+                <input  type="text" name="email" maxlength="80" size="30">
+               </td>
+          
+              </tr>
+              <tr>
+               <td valign="top">
+                <label for="telephone">Phone Number</label>
+               </td>
+               <td valign="top">
+                <input  type="text" name="telephone" maxlength="30" size="30">
+               </td>
+              </tr>
+              <tr>
+               <td valign="top">
+                <label for="comments">Your Message</label>
+               </td>
+               <td valign="top">
+                <textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea>
+               </td>
+          
+              </tr>
+              <tr>
+               <td colspan="2" style="text-align:center">
+                <input type="submit" value="Submit">
+               </td>
+          
+              </tr>
+          
+              </table>
+        </form>
 
         </div>
       </div>
     </div>
 
 
+    <!-- Favorites Content -->
+    <section class="container" id="favorites">
+      <h1 class="welcome text-center color-text">Here Are Your Favorites!</h1>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">Location</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Yelp Star Rating</th>
+          <th scope="col">Remove from Favorites</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        </tbody>
+      </table>
+    </section>
 
 
 
-  </section>
+
+
   </div>
   <!-- /#page-content-wrapper -->
 
@@ -223,7 +257,25 @@
 <!-- /#wrapper -->
 
 
-</body>
+
+
+
+<script>
+    var text = ["Amber", "Lager", "Blonde", "Pilsner", "Stout", "Porter", "Sour", "Bitter", "IPA", "Wheat", "Cider", "Ale"];
+  var counter = 0;
+  var elem = document.getElementById("role");
+  var inst = setInterval(change, 1400);
+  
+  function change() {
+    elem.innerHTML = text[counter];
+    counter++;
+    if (counter >= text.length) {
+      counter = 0;
+    }
+  }
+  </script>
+
+
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

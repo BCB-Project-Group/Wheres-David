@@ -4,13 +4,19 @@ $(document).ready(function () {
   firebaseInit();
   createCommon();
   initialCheck();
-  listeners.sideBar()
+  listeners.resize();
+  listeners.sideBar();
 });
 
 
 //Jquery Functions
 
 
+function viewPortScale() {
+  //set wrapper height based off of viewport
+  console.log("scaling...");
+  $("#wrapper").height($(window).height() - $("header").height());
+}
 
 
 function displaySwitch() {
@@ -18,11 +24,6 @@ function displaySwitch() {
 
   stateSwitch();
 
-  function viewPortScale() {
-    //set wrapper height based off of viewport
-
-    $("#wrapper").height($(window).height() - $("header").height());
-  }
 
   function signInFade() {
     //effect on first time login
@@ -98,6 +99,44 @@ function displaySwitch() {
   }
 }
 
+function displayBrews(target, offset) {
+
+  function cascadeDisplay(array, i) {
+
+
+   if (i < array.length) {
+     $(array[i]).fadeIn(50, () => {
+       i++;
+       cascadeDisplay(array, i)
+     });
+   }
+
+  }
+
+  $(".results").empty();
+  brews.data[offset].forEach(data => {
+    console.log("doin it");
+    let elem = $(
+      `<div class="row justify-content-center mt-4">`
+      + `<div class="col-12 search-result-div card" style="display: none">`
+      + `<div class="row text-center card-body">`
+      + `<div class="col-3">${data.name}</div>`
+      + `<div class="col-3">${data.street}</div>`
+      + `<div class="col-3">${data.phone}</div>`
+      + `<div class="col-3">${data.url}</div>`
+      + `</div></div></div>`
+    );
+
+    target.append(elem);
+  });
+
+  let counter = 0;
+  let elems = $(".search-result-div").toArray();
+
+  cascadeDisplay(elems, counter)
+
+
+}
 
 //Database Functions
 
@@ -129,7 +168,9 @@ function storeUser(input) {
     localStorage.location = JSON.stringify(userData.location);
     localStorage.username = input;
     window.state = "home";
-    displaySwitch()
+    getBrews(userData.location.city,
+      userData.location.state.toLowerCase());
+    displaySwitch();
 
   }
   catch(err) {
@@ -153,15 +194,64 @@ function getLocation() {
     method: "GET"
   }).then(response => {
 
+    console.log(response);
+
     window.userData.location = {
-      city: response.city,
-      state: response.region_name,
+      city: response.city.toLowerCase(),
+      state: response.region_code.toLowerCase(),
       zip: response.zip,
       lat: response.latitude,
       lon: response.longitude
     };
   });
-  // }
+}
+
+function getBrews(city, state) {
+  //search brews
+
+  function separateResults(response) {
+    //separate ajax response into sets of 20
+
+    let i = 0;
+    let tmp = [];
+    window.brews = {
+      offset: 0,
+      data: []
+    };
+
+    response.forEach((brew, index) => {
+
+      if (i < 20) {
+        tmp.push(brew);
+        i++;
+
+      if (index === response.length - 1) {
+          brews.data.push(tmp);
+        }
+      }
+
+      else {
+        brews.data.push(tmp);
+        tmp = [];
+        i = 0
+      }
+    });
+  }
+
+  let url = "http://beermapping.com/webservice/loccity/1d0dec692e53fe232ce728a7b7212c52/"
+    + city
+    + ","
+    + state
+    + "&s=json";
+
+  $.ajax({
+    url: url,
+    method: "GET"
+  }).then(response => {
+    console.log(response);
+    separateResults(response);
+    displayBrews($(`#${window.state}-results`), 0)
+  });
 }
 
 
@@ -239,6 +329,13 @@ function createCommon() {
         }
       })
 
+    },
+
+    resize: () => {
+
+      $(window).on("resize",  () => {
+        viewPortScale()
+      })
     }
   };
 }

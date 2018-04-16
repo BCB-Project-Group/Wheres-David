@@ -125,42 +125,17 @@
 
     <section class="container" id="home" style="display: none">
       <div class="row justify-content-center mt-5">
-        <form class="navbar-form col-12" role="search">
-          <div class="input-group add-on ">
-            <div class="">
-            </div>
-          </div>
-        </form>
+        <div class="col-auto text-center" >
+          <h1 class="welcome color-text">Nearby Brewery Results!</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-12 results" id="home-results">
+
+        </div>
       </div>
 
 
-      <div class="container" id="container3">
-        <h1 class="welcome text-center color-text">Nearby Brewery Results!</h1>
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Status</th>
-            <th scope="col">Location</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Yelp Star Rating</th>
-            <th scope="col">Add to Favorties</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Beer</td>
-            <td>Open</td>
-            <td>San Francisco</td>
-            <td>612-836-1932</td>
-            <td>****</td>
-            <td>Whoo!</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
 
     </section>
 
@@ -252,7 +227,32 @@
       </div>
     </div>
 
-  </section>
+
+    <!-- Favorites Content -->
+    <section class="container" id="favorites">
+      <h1 class="welcome text-center color-text">Here Are Your Favorites!</h1>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">Location</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Yelp Star Rating</th>
+          <th scope="col">Remove from Favorites</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        </tbody>
+      </table>
+    </section>
+
+
+
+
+
   </div>
   <!-- /#page-content-wrapper -->
 
@@ -260,7 +260,8 @@
 <!-- /#wrapper -->
 
 
-</body>
+
+
 
 <script>
     var text = ["Amber", "Lager", "Blonde", "Pilsner", "Stout", "Porter", "Sour", "Bitter", "IPA", "Wheat", "Cider", "Ale"];
@@ -276,6 +277,7 @@
     }
   }
   </script>
+
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"

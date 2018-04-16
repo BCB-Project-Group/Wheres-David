@@ -10,22 +10,18 @@ body {
   padding-right: 70px;
 }
 
-h1 {
+section h1 {
     font-size: 70px;
+    
+    
 }
 
 h2 {
     font-size: 50px;
 }
 
-aside {
 
-    background: white;
-    position: absolute;
-    height: 100%;
-    width: 200px;
-    right: 0;
-}
+
 
 #wrapper {
     height: 166px;
@@ -33,7 +29,14 @@ aside {
 }
 
 
-.jumbotron {background: #0000008c;}
+.text-center{
+  text-align: center !important;
+}
+
+.jumbotron {
+    text-align: center;
+  background: #0000008c;}
+
 
 
 .color-text {
@@ -101,6 +104,7 @@ td {
 
 #contact {
     padding: 1em;
+    font-size: 20px;
 }
 
 #contact .contact-label {
@@ -108,10 +112,23 @@ td {
 }
 
 #picture{
+  border-radius: 20%;
+  
 }
 
 #contact-box{
   color: Black;
+}
+
+.containerp{
+    margin-top: 0;
+    margin-bottom: 1rem;
+    background: #111;
+    padding: 1em;
+    font-size: 20px;
+    border-radius: 19%;
+    margin-top: 1em;
+    
 }
 
 
@@ -123,10 +140,13 @@ td {
 
 #about #contact-box{
     background-color:#eee;
+    font-size: 28px;
     display: inline-block;
     padding: 2em 2em 0em;
     border-radius: 10%;
+
     position: relative;
+
 }
 
 @keyframes example {

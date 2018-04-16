@@ -81,7 +81,7 @@ function displaySwitch() {
     viewPortScale();
 
     $("section").css("display", "none");
-    switch(state) {
+    switch (state) {
       case "signIn":
         signInFade();
         break;
@@ -105,27 +105,51 @@ function displaySwitch() {
 function displayBrews(target, offset) {
 
   function cascadeDisplay(array, i) {
+    //cascade effect for dynamic results
 
+    if (i < array.length) {
+      $(array[i]).fadeIn(50, () => {
+        i++;
+        cascadeDisplay(array, i)
+      });
+    }
+    else {
+      pageButtons(target)
+    }
+  }
 
-   if (i < array.length) {
-     $(array[i]).fadeIn(50, () => {
-       i++;
-       cascadeDisplay(array, i)
-     });
-   }
+  function pageButtons(target) {
+    //create display buttons and activate listener
 
+    let row = $("<div class='row mt-4 mob-row p-0'></div>");
+
+    let left = $(
+      "<div class='left col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
+      + " data-direction='left'><p><</p></div>"
+    );
+    row.append(left);
+    console.log("doing    it")
+
+    let right = $(
+      "<div class='right col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
+      + " data-direction='right'><p>></p></div>"
+    );
+    row.append(right);
+    console.log("doing    it")
+
+    target.append(row)
   }
 
   $(".results").empty();
   window.brews.data[offset].forEach(data => {
     let elem = $(
-      `<div class="row justify-content-center mt-4">`
+      `<div class="row justify-content-center mt-4 p-0">`
       + `<div class="col-12 search-result-div card" style="display: none">`
       + `<div class="row text-center card-body">`
       + `<div class="col-3 result-name result-text">${data.name}</div>`
       + `<div class="col-3 result-address result-text">${data.street}</br>${data.zip}</div>`
       + `<div class="col-3 result-phone result-text">${data.phone}</div>`
-      + `<div class="col-3 result-url result-text">${data.url}</div>`
+      + `<div class="col-3 result-url result-text"><a class="r-link" href="https://${data.url}" target="_blank">Website</a></div>`
       + `</div></div></div>`
     );
 
@@ -135,9 +159,8 @@ function displayBrews(target, offset) {
   let counter = 0;
   let elems = $(".search-result-div").toArray();
 
-  cascadeDisplay(elems, counter)
-
-
+  cascadeDisplay(elems, counter);
+  pageButtons()
 }
 
 //Database Functions
@@ -175,7 +198,7 @@ function storeUser(input) {
     displaySwitch();
 
   }
-  catch(err) {
+  catch (err) {
     console.log("waiting...");
     setTimeout(() => {
       storeUser(input)
@@ -228,7 +251,7 @@ function getBrews(city, state) {
         tmp.push(brew);
         i++;
 
-      if (index === response.length - 1) {
+        if (index === response.length - 1) {
           brews.data.push(tmp);
         }
       }
@@ -263,7 +286,7 @@ function getBrews(city, state) {
 function createCommon() {
   //setup commonly used values
 
-  $("#menu-toggle").click(function(e) {
+  $("#menu-toggle").click(function (e) {
     e.preventDefault();
     console.log("bar toggle");
     $("#wrapper").toggleClass("toggled");
@@ -290,7 +313,7 @@ function createCommon() {
         let input = $("#username").val();
         dbRef.users.once("value").then(snap => {
           if (snap.exists()) {
-            if(Object.keys(snap.val()).indexOf(input) < 0) {
+            if (Object.keys(snap.val()).indexOf(input) < 0) {
               getLocation();
               storeUser(input)
             }
@@ -307,12 +330,12 @@ function createCommon() {
     sideBar: () => {
 
       let a = $("a");
-      a.on("click", function(event) {
+      a.on("click", function (event) {
         event.preventDefault();
         let clicked = $(this);
         console.log(clicked.attr("data-dir"));
 
-        switch(clicked.attr("data-dir")) {
+        switch (clicked.attr("data-dir")) {
           case "about":
             window.state = "about";
             displaySwitch();
@@ -336,7 +359,7 @@ function createCommon() {
 
     resize: () => {
 
-      $(window).on("resize",  () => {
+      $(window).on("resize", () => {
         viewPortScale()
       })
     }
@@ -346,7 +369,7 @@ function createCommon() {
 function initialCheck() {
   // check if user is signed in
 
-  if(typeof localStorage.username !== "undefined") {
+  if (typeof localStorage.username !== "undefined") {
     let user = localStorage.username;
     db.ref(`/users/${user}`).once("value").then(snap => {
       if (snap.exists()) {

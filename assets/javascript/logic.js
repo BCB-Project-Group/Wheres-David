@@ -120,10 +120,10 @@ function displayBrews(target, offset) {
       `<div class="row justify-content-center mt-4">`
       + `<div class="col-12 search-result-div card" style="display: none">`
       + `<div class="row text-center card-body">`
-      + `<div class="col-3">name</div>`
-      + `<div class="col-3">location</div>`
-      + `<div class="col-3">rating</div>`
-      + `<div class="col-3">other stuff</div>`
+      + `<div class="col-3">${data.name}</div>`
+      + `<div class="col-3">${data.street}</div>`
+      + `<div class="col-3">${data.phone}</div>`
+      + `<div class="col-3">${data.url}</div>`
       + `</div></div></div>`
     );
 

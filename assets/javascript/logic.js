@@ -101,6 +101,22 @@ function displaySwitch() {
 
 function displayBrews(target, offset) {
 
+  $(".results").empty();
+  brews.data[offset].forEach(data => {
+    console.log("doin it");
+    let elem = $(
+      `<div class="row justify-content-center mt-4">`
+      + `<div class="col-12 search-result-div card">`
+      + `<div class="row text-center card-body">`
+      + `<div class="col-3">name</div>`
+      + `<div class="col-3">location</div>`
+      + `<div class="col-3">rating</div>`
+      + `<div class="col-3">other stuff</div>`
+      + `</div></div></div>`
+    );
+
+    target.append(elem)
+  });
 }
 
 //Database Functions

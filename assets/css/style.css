@@ -6,8 +6,7 @@ body {
 
 section h1 {
     font-size: 70px;
-    position: relative;
-    left: 1.5em;
+    
     
 }
 
@@ -117,8 +116,7 @@ td {
 
 #picture{
   border-radius: 20%;
-  position: relative;
-  left: 1.5em;
+  
 }
 
 #contact{
@@ -133,8 +131,7 @@ td {
     font-size: 20px;
     border-radius: 19%;
     margin-top: 1em;
-    position: relative;
-    left: 5em;
+    
 }
 
 
@@ -152,8 +149,7 @@ td {
     display: inline-block;
     padding: 2em 2em 0em;
     border-radius: 10%;
-    position: relative;
-    left: 3.5em;
+    
     /* left: 8em; */
 }
 

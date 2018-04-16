@@ -3,6 +3,11 @@ body {
     overflow: hidden;
 }
 
+#role {
+  size: 30px;
+  color: lightblue;
+  text-align: center;
+}
 
 h1 {
     font-size: 70px;

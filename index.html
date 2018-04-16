@@ -123,6 +123,8 @@
     </section>
 
     <!--Home section-->
+    <h2><div id="role"> Ale</div></h2>
+
     <section class="container" id="home" style="display: none">
       <div class="row justify-content-center mt-5">
         <form class="navbar-form col-12" role="search">
@@ -261,6 +263,22 @@
 
 
 </body>
+
+<script>
+    var text = ["Amber", "Blonde", "IPA", "Wheat", "Cider", "Ale"];
+  var counter = 0;
+  var elem = document.getElementById("role");
+  var inst = setInterval(change, 1400);
+  
+  function change() {
+    elem.innerHTML = text[counter];
+    counter++;
+    if (counter >= text.length) {
+      counter = 0;
+    }
+  }
+  </script>
+
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

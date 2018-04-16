@@ -3,6 +3,12 @@ body {
     overflow: hidden;
 }
 
+#role {
+  size: 30px;
+  color: lightcyan;
+  text-align: center;
+  padding-right: 70px;
+}
 
 h1 {
     font-size: 70px;
@@ -51,23 +57,17 @@ td {
   font-size: 20px;
 }
 
-/*@media screen and (min-width: 600px) {
-  .jumbotron {
-    font-size: 80px;
-  }
+#sidebar-wrapper {
+  background-color: goldenrod;
+  font-size: 43px;
+}
+#sidebar-wrapper li {
+  padding: 10px;
 }
 
-@media screen and (max-width: 600px) {
-  .jumbotron {
-    font-size: 30px;
-  }
-  body {
-    color: pink;
-  }
-}*/
-
-/*about styles*/
-
+.sidebar-nav li a {
+  color: lightcyan;
+}
 
 .contact-label{
     display: block;
@@ -110,11 +110,9 @@ td {
 #picture{
 }
 
-#contact{
-    /* left: 15em; */
+#contact-box{
+  color: Black;
 }
-
-
 
 
 #about {
@@ -129,6 +127,29 @@ td {
     padding: 2em 2em 0em;
     border-radius: 10%;
     position: relative;
-    /* left: 8em; */
 }
+
+@keyframes example {
+  0% {background-color:gray;}
+  25% {background-color: goldenrod;}
+  50% {background-color: black;}
+  100% {background-color:gray;}
+}
+/* The elements to apply the animation to */
+#menu-toggle  {
+  background-color: lightgray;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+#role {
+  background-color: lightcyan;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
 

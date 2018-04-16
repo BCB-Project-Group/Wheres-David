@@ -46,6 +46,8 @@ function displaySwitch() {
 
   function homeFade() {
     checkHeader();
+    $("#mod-text").text(`Brews near ${userData.location.city}`);
+    $("#mod-state").text(userData.location.stateFull);
     $("#home").fadeIn(750)
   }
 
@@ -114,16 +116,15 @@ function displayBrews(target, offset) {
   }
 
   $(".results").empty();
-  brews.data[offset].forEach(data => {
-    console.log("doin it");
+  window.brews.data[offset].forEach(data => {
     let elem = $(
       `<div class="row justify-content-center mt-4">`
       + `<div class="col-12 search-result-div card" style="display: none">`
       + `<div class="row text-center card-body">`
-      + `<div class="col-3">${data.name}</div>`
-      + `<div class="col-3">${data.street}</div>`
-      + `<div class="col-3">${data.phone}</div>`
-      + `<div class="col-3">${data.url}</div>`
+      + `<div class="col-3 result-name result-text">${data.name}</div>`
+      + `<div class="col-3 result-address result-text">${data.street}</br>${data.zip}</div>`
+      + `<div class="col-3 result-phone result-text">${data.phone}</div>`
+      + `<div class="col-3 result-url result-text">${data.url}</div>`
       + `</div></div></div>`
     );
 
@@ -199,6 +200,7 @@ function getLocation() {
     window.userData.location = {
       city: response.city.toLowerCase(),
       state: response.region_code.toLowerCase(),
+      stateFull: response.region_name,
       zip: response.zip,
       lat: response.latitude,
       lon: response.longitude

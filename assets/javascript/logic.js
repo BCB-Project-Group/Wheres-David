@@ -101,12 +101,24 @@ function displaySwitch() {
 
 function displayBrews(target, offset) {
 
+  function cascadeDisplay(array, i) {
+
+
+   if (i < array.length) {
+     $(array[i]).fadeIn(50, () => {
+       i++;
+       cascadeDisplay(array, i)
+     });
+   }
+
+  }
+
   $(".results").empty();
   brews.data[offset].forEach(data => {
     console.log("doin it");
     let elem = $(
       `<div class="row justify-content-center mt-4">`
-      + `<div class="col-12 search-result-div card">`
+      + `<div class="col-12 search-result-div card" style="display: none">`
       + `<div class="row text-center card-body">`
       + `<div class="col-3">name</div>`
       + `<div class="col-3">location</div>`
@@ -115,8 +127,15 @@ function displayBrews(target, offset) {
       + `</div></div></div>`
     );
 
-    target.append(elem)
+    target.append(elem);
   });
+
+  let counter = 0;
+  let elems = $(".search-result-div").toArray();
+
+  cascadeDisplay(elems, counter)
+
+
 }
 
 //Database Functions
@@ -149,7 +168,9 @@ function storeUser(input) {
     localStorage.location = JSON.stringify(userData.location);
     localStorage.username = input;
     window.state = "home";
-    displaySwitch()
+    getBrews(userData.location.city,
+      userData.location.state.toLowerCase());
+    displaySwitch();
 
   }
   catch(err) {
@@ -173,9 +194,11 @@ function getLocation() {
     method: "GET"
   }).then(response => {
 
+    console.log(response);
+
     window.userData.location = {
-      city: response.city,
-      state: response.region_name,
+      city: response.city.toLowerCase(),
+      state: response.region_code.toLowerCase(),
       zip: response.zip,
       lat: response.latitude,
       lon: response.longitude
@@ -225,7 +248,9 @@ function getBrews(city, state) {
     url: url,
     method: "GET"
   }).then(response => {
-    separateResults(response)
+    console.log(response);
+    separateResults(response);
+    displayBrews($(`#${window.state}-results`), 0)
   });
 }
 

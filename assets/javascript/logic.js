@@ -105,7 +105,7 @@ function displayBrews(target, offset) {
   brews.data[offset].forEach(data => {
     console.log("doin it");
     let elem = $(
-      `<div class="row justify-content-center">`
+      `<div class="row justify-content-center mt-4">`
       + `<div class="col-12 search-result-div card">`
       + `<div class="row text-center card-body">`
       + `<div class="col-3">name</div>`

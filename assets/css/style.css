@@ -4,7 +4,7 @@ body {
 }
 
 #role {
-  size: 30px;
+  font-size: 38px;
   color: lightcyan;
   text-align: center;
   padding-right: 70px;
@@ -149,6 +149,7 @@ td {
   background-color: lightcyan;
   animation-name: example;
   animation-duration: 4s;
+  height: auto;
   animation-direction: alternate;
   animation-iteration-count: infinite;
 }

@@ -124,11 +124,11 @@ function displayBrews(target, offset) {
       });
     }
     else {
-      pageButtons(target)
+      pageButtons(target, true)
     }
   }
 
-  function pageButtons(target) {
+  function pageButtons(target, pos) {
     //create display buttons and activate listener
 
     console.log("page buttons");
@@ -148,13 +148,18 @@ function displayBrews(target, offset) {
       "<div class='right col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
       + " data-direction='right'><p>></p></div>"
     );
-    if (brews.offset === brews.data.length -1) {
+    if (brews.offset === brews.data.length - 1) {
       right.addClass("invisible")
     }
     row.append(right);
 
-    target.append(row);
-    listeners.mobility()
+    if (!pos) {
+      target.prepend(row);
+    }
+    else if (pos) {
+      target.append(row);
+      listeners.mobility()
+    }
   }
 
   $(`#${window.state}-results`).empty();
@@ -178,6 +183,7 @@ function displayBrews(target, offset) {
   let counter = 0;
   let elems = $(".search-result-div").toArray();
 
+  pageButtons(target, false);
   cascadeDisplay(elems, counter, target);
 }
 

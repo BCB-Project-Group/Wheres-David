@@ -1,5 +1,6 @@
 //on Start
 
+$("section").css("display", "none");
 $(document).ready(function () {
   firebaseInit();
   createCommon();

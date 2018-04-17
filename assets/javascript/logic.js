@@ -497,12 +497,12 @@ function createCommon() {
             let marker = L.marker([lat, long]).addTo(mymap);
 
             // adding popup to the marker that populates on click, add to brewery name and type from beermapping. the names do not currently update
-            marker.bindPopup("<b>" + name + "</b>" + "<br>"+ type);
+            marker.bindPopup("<b>" + name + "</b>" + "<br>" + type);
             console.log("i don't show up after first click on a div result")
           });
 
         })
-      })
+      });
     }
   };
 }

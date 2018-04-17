@@ -453,6 +453,56 @@ function createCommon() {
           $("#state").val().toLowerCase(),
           )
       });
+    },
+
+    map: () => {
+
+      $(".search-result-div").on("click", function () {
+
+        let barID = $(this).attr("data-id");
+
+        console.log("this the bar ID of the div that was clicked - " + barID);
+        // example of div: <div class="search-result-div" barID="31">Anchor Brewing</div>
+
+
+        let queryURL = "http://beermapping.com/webservice/locmap/1d0dec692e53fe232ce728a7b7212c52/" + barID + "&s=json";
+        // search the beermappingDB
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function (response) {
+          console.log("this is the response object - ", response);
+
+          response.forEach(element => {
+            console.log(element.lat);
+            console.log(element.lng);
+
+            let lat = element.lat;
+            let long = element.lng;
+            let name = element.name;
+            let type = element.status;
+
+            // adding map with the attributes of the clicked items, let mymap is setting the initial view center window
+
+            let mymap = L.map('mapid').setView([lat, long], 16);
+            console.log("the lat " + lat + " and long " + long + " of my map")
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+              attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+              maxZoom: 18,
+              id: 'mapbox.streets',
+              accessToken: 'pk.eyJ1IjoiZWdjYXJsIiwiYSI6ImNqZnhmcXljMjA5ZjkyeG5wcDNyZzR0cmIifQ.6TRl8bfjecwZjTuMbBlXFA'
+            }).addTo(mymap);
+
+            // creating a marker on the map, supposed to update with marker based on responses from beermapping, but doesn't update currently
+            let marker = L.marker([lat, long]).addTo(mymap);
+
+            // adding popup to the marker that populates on click, add to brewery name and type from beermapping. the names do not currently update
+            marker.bindPopup("<b>" + name + "</b>" + "<br>"+ type);
+            console.log("i don't show up after first click on a div result")
+          });
+
+        })
+      })
     }
   };
 }

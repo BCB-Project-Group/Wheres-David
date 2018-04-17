@@ -4,7 +4,7 @@ body {
 }
 
 #role {
-  size: 30px;
+  font-size: 38px;
   color: lightcyan;
   text-align: center;
   padding-right: 70px;
@@ -12,9 +12,8 @@ body {
 
 section h1 {
     font-size: 70px;
-    
-    
-}
+    text-align:  center;
+
 
 h2 {
     font-size: 50px;
@@ -155,21 +154,56 @@ td {
   50% {background-color: black;}
   100% {background-color:gray;}
 }
-/* The elements to apply the animation to */
-#menu-toggle  {
-  background-color: lightgray;
-  animation-name: example;
-  animation-duration: 4s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
+#menu-toggle {
+    background-color: lightgray;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+#menu-toggle:after {
+    color: white;
 }
 
 #role {
   background-color: lightcyan;
   animation-name: example;
   animation-duration: 4s;
+  height: auto;
   animation-direction: alternate;
   animation-iteration-count: infinite;
+  border-bottom: solid 2px #0000008c;
+  background-color: white;
 }
 
+/*jquery element styles*/
 
+.mob-button {
+    font-size: 40px;
+}
+
+.search-result-div {
+    background: #daa521d6;
+    border: solid 2px black;
+    font-size: 22px;
+    color: #404040;
+}
+
+.r-link:active {
+
+}
+
+.r-link:link {
+    color: inherit;
+}
+
+.r-link:hover {
+    font-weight: bold;
+    border: none;
+    text-underline: none;
+}
+
+.r-link:visited {
+    color: inherit;
+}

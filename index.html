@@ -14,8 +14,8 @@
 
 <!--persistent header-->
 
-<header class="jumbotron container-fluid mb-0 p-1" style="display: none">
-  <div class="row justify-content-between">
+<header class="jumbotron container-fluid mb-0 p-0" style="display: none">
+  <div class="row justify-content-between mt-2">
     <div class="col-auto"></div>
     <div class="text-center col color-text">
       <h1>Where's David?</h1>
@@ -24,11 +24,11 @@
       <a href="#menu-toggle" class="btn btn-secondary mr-4 p-2 " id="menu-toggle">Menu</a>
     </div>
   </div>
-  <!--<div class="row justify-content-center">-->
-  <!--<div class="text-center col text-dark">-->
-  <!--<h2>Find Your Local Craft Breweries!</h2>-->
-  <!--</div>-->
-  <!--</div>-->
+  <div class="row justify-content-between">
+    <div class="text-center col-12 color-text">
+      <div id="role" class="row justify-content-center"><h2 class="col-12">Ale</h2></div>
+    </div>
+  </div>
 </header>
 
 
@@ -72,16 +72,16 @@
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li>
-        <a href="#" data-dir="home">Home</a>
+        <a href="#" class="sideLink" data-dir="home">Home</a>
       </li>
       <li>
-        <a href="#" data-dir="about">About</a>
+        <a href="#" class="sideLink" data-dir="about">About</a>
       </li>
       <li>
-        <a href="#" data-dir="favorites">Favorites</a>
+        <a href="#" class="sideLink" data-dir="favorites">Favorites</a>
       </li>
       <li>
-        <a href="#" data-dir="search">Search</a>
+        <a href="#" class="sideLink" data-dir="search">Search</a>
       </li>
     </ul>
   </div>
@@ -91,41 +91,26 @@
   <div id="page-content-wrapper">
 
     <!-- Search Content -->
-    <section class="container" id="search">
-      <div class="input-group">
-            <span class="input-group-addon">
-                <i class="glyphicon glyphicon-search"></i>
-            </span>
-        <input type="text" class="form-control" placeholder="Search"/>
+    <section class="container" id="search" style="display: none;">
+      <div class="row justify-content-center">
+        <div class="col-12 welcome text-center color-text">
+          <h1>Search Brews</h1>
+        </div>
       </div>
-
-      <h1 class="welcome text-center color-text">Nearby Brewery Results!</h1>
-      <table class="table table-hover">
-        <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Status</th>
-          <th scope="col">Location</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Yelp Star Rating</th>
-          <th scope="col">Add to Favorites</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
     </section>
 
     <!--Home section-->
-    <h2>
-      <div id="role"> Ale</div>
-    </h2>
 
     <section class="container" id="home" style="display: none">
       <div class="row justify-content-center mt-5">
-        <div class="col-auto text-center">
-          <h1 class="welcome color-text">Nearby Brewery Results!</h1>
+        <div class="col-auto text-center" >
+          <h1 class="welcome color-text" id="mod-text">Nearby Brewery Results!</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-auto text-center" >
+          <h2 class="welcome color-text" id="mod-state"></h2>
+
         </div>
       </div>
       <div class="row justify-content-center mt-5">
@@ -227,8 +212,9 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-    </section>
 
     <!-- Favorites Content -->
     <section class="container" id="favorites">

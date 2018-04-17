@@ -5,6 +5,7 @@ $(document).ready(function () {
   createCommon();
   initialCheck();
   listeners.resize();
+  listeners.menu();
   listeners.sideBar();
 });
 
@@ -14,8 +15,8 @@ $(document).ready(function () {
 
 function viewPortScale() {
   //set wrapper height based off of viewport
-  console.log("scaling...");
-  $("#wrapper").height($(window).height() - $("header").height());
+
+  $("#wrapper").height($(window).height() - $("header").height() + 10);
 }
 
 
@@ -37,7 +38,7 @@ function displaySwitch() {
         $("#sign-in-banner-2").fadeIn(750, () => {
           setTimeout(() => {
             $("#sign-in-form").fadeIn(750);
-            listeners.signIn()
+            window.listeners.signIn()
           }, 250);
         })
       }, 250)
@@ -46,6 +47,8 @@ function displaySwitch() {
 
   function homeFade() {
     checkHeader();
+    $("#mod-text").text(`Brews near ${userData.location.city}`);
+    $("#mod-state").text(userData.location.stateFull);
     $("#home").fadeIn(750)
   }
 
@@ -78,7 +81,7 @@ function displaySwitch() {
     viewPortScale();
 
     $("section").css("display", "none");
-    switch(state) {
+    switch (state) {
       case "signIn":
         signInFade();
         break;
@@ -92,7 +95,6 @@ function displaySwitch() {
         favoritesFade();
         break;
       case "about":
-        console.log("bout");
         aboutFade();
         break;
     }
@@ -102,40 +104,61 @@ function displaySwitch() {
 function displayBrews(target, offset) {
 
   function cascadeDisplay(array, i) {
+    //cascade effect for dynamic results
 
+    if (i < array.length) {
+      $(array[i]).fadeIn(50, () => {
+        i++;
+        cascadeDisplay(array, i)
+      });
+    }
+    else {
+      pageButtons(target)
+    }
+  }
 
-   if (i < array.length) {
-     $(array[i]).fadeIn(50, () => {
-       i++;
-       cascadeDisplay(array, i)
-     });
-   }
+  function pageButtons(target) {
+    //create display buttons and activate listener
 
+    let row = $("<div class='row mt-4 mob-row p-0'></div>");
+
+    let left = $(
+      "<div class='left col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
+      + " data-direction='left'><p><</p></div>"
+    );
+    row.append(left);
+
+    let right = $(
+      "<div class='right col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
+      + " data-direction='right'><p>></p></div>"
+    );
+    row.append(right);
+
+    target.append(row)
   }
 
   $(".results").empty();
-  brews.data[offset].forEach(data => {
-    console.log("doin it");
+  window.brews.data[offset].forEach(data => {
     let elem = $(
-      `<div class="row justify-content-center mt-4">`
+      `<div class="row justify-content-center mt-4 p-0">`
       + `<div class="col-12 search-result-div card" style="display: none">`
       + `<div class="row text-center card-body">`
-      + `<div class="col-3">${data.name}</div>`
-      + `<div class="col-3">${data.street}</div>`
-      + `<div class="col-3">${data.phone}</div>`
-      + `<div class="col-3">${data.url}</div>`
+      + `<div class="col-md-3 col-12 result-name result-text">${data.name}</div>`
+      + `<div class="col-md-3 col-12 result-address result-text">${data.street}</br>${data.zip}</div>`
+      + `<div class="col-md-3 col-12 result-phone result-text">${data.phone}</div>`
+      + `<div class="col-md-3 col-12 result-url result-text"><a class="r-link" href="https://${data.url}" target="_blank">Website</a></div>`
       + `</div></div></div>`
     );
 
     target.append(elem);
-  });
+  }
+);
 
   let counter = 0;
   let elems = $(".search-result-div").toArray();
 
-  cascadeDisplay(elems, counter)
-
-
+  cascadeDisplay(elems, counter);
+  pageButtons()
 }
 
 //Database Functions
@@ -158,7 +181,9 @@ function firebaseInit() {
 function storeUser(input) {
   console.log("storeUser");
   try {
-    dbRef.user = db.ref(`/users/${input}`);
+    dbRef.user = db.ref(
+  `/users/${input}`
+);
     dbRef.user.set({
       username: input,
       location: userData.location,
@@ -173,7 +198,7 @@ function storeUser(input) {
     displaySwitch();
 
   }
-  catch(err) {
+  catch (err) {
     console.log("waiting...");
     setTimeout(() => {
       storeUser(input)
@@ -199,6 +224,7 @@ function getLocation() {
     window.userData.location = {
       city: response.city.toLowerCase(),
       state: response.region_code.toLowerCase(),
+      stateFull: response.region_name,
       zip: response.zip,
       lat: response.latitude,
       lon: response.longitude
@@ -225,7 +251,7 @@ function getBrews(city, state) {
         tmp.push(brew);
         i++;
 
-      if (index === response.length - 1) {
+        if (index === response.length - 1) {
           brews.data.push(tmp);
         }
       }
@@ -250,7 +276,9 @@ function getBrews(city, state) {
   }).then(response => {
     console.log(response);
     separateResults(response);
-    displayBrews($(`#${window.state}-results`), 0)
+    displayBrews($(
+  `#${window.state}-results`
+), 0)
   });
 }
 
@@ -259,12 +287,6 @@ function getBrews(city, state) {
 
 function createCommon() {
   //setup commonly used values
-
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    console.log("bar toggle");
-    $("#wrapper").toggleClass("toggled");
-  });
 
   window.header = false;
 
@@ -287,7 +309,7 @@ function createCommon() {
         let input = $("#username").val();
         dbRef.users.once("value").then(snap => {
           if (snap.exists()) {
-            if(Object.keys(snap.val()).indexOf(input) < 0) {
+            if (Object.keys(snap.val()).indexOf(input) < 0) {
               getLocation();
               storeUser(input)
             }
@@ -303,13 +325,14 @@ function createCommon() {
 
     sideBar: () => {
 
-      let a = $("a");
-      a.on("click", function(event) {
+      let a = $(".sideLink");
+
+      a.on("click", function (event) {
         event.preventDefault();
         let clicked = $(this);
-        console.log(clicked.attr("data-dir"));
+        $("#wrapper").toggleClass("toggled");
 
-        switch(clicked.attr("data-dir")) {
+        switch (clicked.attr("data-dir")) {
           case "about":
             window.state = "about";
             displaySwitch();
@@ -333,9 +356,17 @@ function createCommon() {
 
     resize: () => {
 
-      $(window).on("resize",  () => {
+      $(window).on("resize", () => {
         viewPortScale()
-      })
+      });
+    },
+
+    menu: () => {
+
+      $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
     }
   };
 }
@@ -343,14 +374,18 @@ function createCommon() {
 function initialCheck() {
   // check if user is signed in
 
-  if(typeof localStorage.username !== "undefined") {
+  if (typeof localStorage.username !== "undefined") {
     let user = localStorage.username;
-    db.ref(`/users/${user}`).once("value").then(snap => {
+    db.ref(
+  `/users/${user}`
+).once("value").then(snap => {
       if (snap.exists()) {
         userData.name = snap.val().username;
         userData.location = snap.val().location;
         userData.favorites = snap.val().favorites;
-        window.dbRef.user = db.ref(`/users/${user}`);
+        window.dbRef.user = db.ref(
+  `/users/${user}`
+);
         window.state = "home"
       }
       else {

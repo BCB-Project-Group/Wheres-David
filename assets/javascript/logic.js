@@ -63,6 +63,7 @@ function displaySwitch() {
 
   function searchFade() {
     checkHeader();
+    listeners.search();
     $("#search").fadeIn(750)
   }
 
@@ -438,6 +439,19 @@ function createCommon() {
           //   }
           // );
         }
+      });
+    },
+
+    search: () => {
+
+      let form = $("#search-form");
+      form.off("submit");
+      form.on("submit", function(event) {
+        event.preventDefault();
+        getBrews(
+          $("#city").val().toLowerCase(),
+          $("#state").val().toLowerCase(),
+          )
       });
     }
   };

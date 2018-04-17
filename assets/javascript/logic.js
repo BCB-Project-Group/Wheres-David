@@ -4,6 +4,7 @@ $("section").css("display", "none");
 $(document).ready(function () {
   firebaseInit();
   createCommon();
+  alchoholText();
   initialCheck();
   listeners.resize();
   listeners.menu();
@@ -111,13 +112,15 @@ function displaySwitch() {
 
 function displayBrews(target, offset) {
 
-  function cascadeDisplay(array, i) {
+  function cascadeDisplay(array, i, target) {
     //cascade effect for dynamic results
+
+    console.log("cascade");
 
     if (i < array.length) {
       $(array[i]).fadeIn(50, () => {
         i++;
-        cascadeDisplay(array, i)
+        cascadeDisplay(array, i, target)
       });
     }
     else {
@@ -127,6 +130,8 @@ function displayBrews(target, offset) {
 
   function pageButtons(target) {
     //create display buttons and activate listener
+
+    console.log("page buttons");
 
     let row = $("<div class='row mt-4 mob-row p-0'></div>");
 
@@ -142,32 +147,47 @@ function displayBrews(target, offset) {
     );
     row.append(right);
 
-    target.append(row)
+    target.append(row);
+    listeners.mobility()
   }
 
-  $(".results").empty();
+  $(`#${window.state}-results`).empty();
+  console.log("initial");
   window.brews.data[offset].forEach(data => {
-    let elem = $(
-      `<div class="row justify-content-center mt-4 p-0">`
-      + `<div class="col-12 search-result-div card" data-id="${data.id}" style="display: none">`
-      + `<div class="row text-center card-body">`
-      + `<div class="col-md-3 col-12 result-name result-text">${data.name}</div>`
-      + `<div class="col-md-3 col-12 result-address result-text">${data.street}</br>${data.zip}</div>`
-      + `<div class="col-md-3 col-12 result-phone result-text">${data.phone}</div>`
-      + `<div class="col-md-3 col-12 result-url result-text"><a class="r-link" href="https://${data.url}" target="_blank">Website</a></div>`
-      + `</div></div></div>`
-    );
+      let elem = $(
+        `<div class="row justify-content-center mt-4 p-0">`
+        + `<div class="col-12 search-result-div card" data-id="${data.id}" style="display: none">`
+        + `<div class="row text-center card-body">`
+        + `<div class="col-md-3 col-12 result-name result-text">${data.name}</div>`
+        + `<div class="col-md-3 col-12 result-address result-text">${data.street}</br>${data.zip}</div>`
+        + `<div class="col-md-3 col-12 result-phone result-text">${data.phone}</div>`
+        + `<div class="col-md-3 col-12 result-url result-text"><a class="r-link" href="https://${data.url}" target="_blank">Website</a></div>`
+        + `</div></div></div>`
+      );
 
-    target.append(elem);
-  }
-
+      target.append(elem);
+    }
   );
 
   let counter = 0;
   let elems = $(".search-result-div").toArray();
 
-  cascadeDisplay(elems, counter);
-  pageButtons()
+  cascadeDisplay(elems, counter, target);
+}
+
+function alchoholText() {
+  let text = ["Amber", "Lager", "Blonde", "Pilsner", "Stout", "Porter", "Sour", "Bitter", "IPA", "Wheat", "Cider", "Ale"];
+  let counter = 0;
+  let elem = document.getElementById("role");
+  let inst = setInterval(change, 1400);
+
+  function change() {
+    elem.innerHTML = text[counter];
+    counter++;
+    if (counter >= text.length) {
+      counter = 0;
+    }
+  }
 }
 
 //Database Functions
@@ -186,13 +206,12 @@ function firebaseInit() {
 
   window.db = firebase.database();
 }
+
 function storeUser(input) {
   console.log("storeUser");
   try {
     dbRef.user = db.ref(
-
-  `/users/${input}`
-
+      `/users/${input}`
     );
     dbRef.user.set({
       username: input,
@@ -285,9 +304,7 @@ function getBrews(city, state) {
     console.log(response);
     separateResults(response);
     displayBrews($(
-
-  `#${window.state}-results`
-
+      `#${window.state}-results`
     ), 0)
   });
 }
@@ -299,6 +316,7 @@ function createCommon() {
   //setup commonly used values
 
   window.header = false;
+  window.repetitionGate = false;
 
   window.userData = {
     name: undefined,
@@ -381,7 +399,34 @@ function createCommon() {
 
     mobility: () => {
 
+      let mob = $(".mob-button");
+      mob.off("click");
 
+      mob.on("click", function (event) {
+
+        event.preventDefault();
+        console.log("left");
+        let clicked = $(this);
+        if (clicked.attr("data-direction") === "right"
+          && brews.offset < brews.data.length - 1) {
+          console.log("more brews");
+          brews.offset++;
+          // $(".search-result-div").fadeOut(750, () => {
+          displayBrews($(`#${window.state}-results`), brews.offset)
+          //   }
+          // );
+        }
+
+        else if (clicked.attr("data-direction") === "left"
+          && brews.offset > 0) {
+          brews.offset--;
+          // $(".search-result-div").fadeOut(750, () => {
+          console.log("more brews");
+          displayBrews($(`#${window.state}-results`), brews.offset)
+          //   }
+          // );
+        }
+      });
     }
   };
 }
@@ -392,18 +437,14 @@ function initialCheck() {
   if (typeof localStorage.username !== "undefined") {
     let user = localStorage.username;
     db.ref(
-
-  `/users/${user}`
-
+      `/users/${user}`
     ).once("value").then(snap => {
       if (snap.exists()) {
         userData.name = snap.val().username;
         userData.location = snap.val().location;
         userData.favorites = snap.val().favorites;
         window.dbRef.user = db.ref(
-
-  `/users/${user}`
-
+          `/users/${user}`
         );
         window.state = "home"
       }

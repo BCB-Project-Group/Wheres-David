@@ -172,8 +172,11 @@ aside {
     color: #404040;
 }
 
+.search-result-div:hover {
+    background: #fdb400;
+}
+
 #search-form {
-    background: #daa521d6;
     border: solid 2px black;
     font-size: 22px;
     color: #404040;
@@ -195,4 +198,20 @@ aside {
 
 .r-link:visited {
     color: inherit;
+}
+
+/*map modal*/
+
+#map-modal {
+    position: fixed !important;
+    z-index: 999 !important;
+    padding: 0 !important;
+    margin-right: 20px;
+}
+
+#map-card {
+    background: #bbbab7f5;
+    border: solid 2px black;
+    font-size: 22px;
+    color: #404040;
 }

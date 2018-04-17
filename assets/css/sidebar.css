@@ -21,7 +21,7 @@ body {
 }
 
 #sidebar-wrapper {
-    z-index: 1000;
+    z-index: 998;
     position: fixed;
     right: 250px;
     width: 0;

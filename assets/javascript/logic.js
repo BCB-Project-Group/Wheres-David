@@ -168,7 +168,7 @@ function displayBrews(target, offset) {
   window.brews.data[offset].forEach(data => {
       let elem = $(
         `<div class="row justify-content-center mt-4 p-0">`
-        + `<div class="col-12 search-result-div card" data-id="${data.id}" style="display: none">`
+        + `<div class="col-12 search-result-div card btn" data-id="${data.id}" style="display: none">`
         + `<div class="row text-center card-body">`
         + `<div class="col-md-3 col-12 result-name result-text">${data.name}</div>`
         + `<div class="col-md-3 col-12 result-address result-text">${data.street}</br>${data.zip}</div>`
@@ -475,32 +475,32 @@ function createCommon() {
           let element = response;
 
           // response.forEach(element => {
-            console.log(element.lat);
-            console.log(element.lng);
+          console.log(element.lat);
+          console.log(element.lng);
 
-            let lat = element.lat;
-            let long = element.lng;
-            let name = element.name;
-            let type = element.status;
+          let lat = element.lat;
+          let long = element.lng;
+          let name = element.name;
+          let type = element.status;
 
-            // adding map with the attributes of the clicked items, let myMap is setting the initial view center window
+          // adding map with the attributes of the clicked items, let myMap is setting the initial view center window
 
-            let myMap = L.map('mapid').setView([lat, long], 16);
-            console.log(myMap);
-            console.log("the lat " + lat + " and long " + long + " of my map");
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-              attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-              maxZoom: 18,
-              id: 'mapbox.streets',
-              accessToken: 'pk.eyJ1IjoiZWdjYXJsIiwiYSI6ImNqZnhmcXljMjA5ZjkyeG5wcDNyZzR0cmIifQ.6TRl8bfjecwZjTuMbBlXFA'
-            }).addTo(myMap);
+          let myMap = L.map('mapid').setView([lat, long], 16);
+          console.log(myMap);
+          console.log("the lat " + lat + " and long " + long + " of my map");
+          L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoiZWdjYXJsIiwiYSI6ImNqZnhmcXljMjA5ZjkyeG5wcDNyZzR0cmIifQ.6TRl8bfjecwZjTuMbBlXFA'
+          }).addTo(myMap);
 
-            // creating a marker on the map, supposed to update with marker based on responses from beermapping, but doesn't update currently
-            let marker = L.marker([lat, long]).addTo(myMap);
+          // creating a marker on the map, supposed to update with marker based on responses from beermapping, but doesn't update currently
+          let marker = L.marker([lat, long]).addTo(myMap);
 
-            // adding popup to the marker that populates on click, add to brewery name and type from beermapping. the names do not currently update
-            marker.bindPopup("<b>" + name + "</b>" + "<br>" + type);
-            console.log("i don't show up after first click on a div result")
+          // adding popup to the marker that populates on click, add to brewery name and type from beermapping. the names do not currently update
+          marker.bindPopup("<b>" + name + "</b>" + "<br>" + type);
+          console.log("i don't show up after first click on a div result")
           // });
 
         })

@@ -50,8 +50,8 @@ aside {
   background: white;
 }
 
-td {
-    text-align: left;
+.invisible {
+    opacity: 0;
 }
 
 #menu-toggle {

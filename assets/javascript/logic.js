@@ -139,12 +139,18 @@ function displayBrews(target, offset) {
       "<div class='left col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
       + " data-direction='left'><p><</p></div>"
     );
+    if (brews.offset === 0) {
+      left.addClass("invisible")
+    }
     row.append(left);
 
     let right = $(
       "<div class='right col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
       + " data-direction='right'><p>></p></div>"
     );
+    if (brews.offset === brews.data.length -1) {
+      right.addClass("invisible")
+    }
     row.append(right);
 
     target.append(row);

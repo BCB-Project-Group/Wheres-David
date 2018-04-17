@@ -446,12 +446,12 @@ function createCommon() {
 
       let form = $("#search-form");
       form.off("submit");
-      form.on("submit", function(event) {
+      form.on("submit", function (event) {
         event.preventDefault();
         getBrews(
           $("#city").val().toLowerCase(),
           $("#state").val().toLowerCase(),
-          )
+        )
       });
     },
 
@@ -472,8 +472,9 @@ function createCommon() {
           method: "GET"
         }).then(function (response) {
           console.log("this is the response object - ", response);
+          let element = response;
 
-          response.forEach(element => {
+          // response.forEach(element => {
             console.log(element.lat);
             console.log(element.lng);
 
@@ -482,24 +483,25 @@ function createCommon() {
             let name = element.name;
             let type = element.status;
 
-            // adding map with the attributes of the clicked items, let mymap is setting the initial view center window
+            // adding map with the attributes of the clicked items, let myMap is setting the initial view center window
 
-            let mymap = L.map('mapid').setView([lat, long], 16);
-            console.log("the lat " + lat + " and long " + long + " of my map")
+            let myMap = L.map('mapid').setView([lat, long], 16);
+            console.log(myMap);
+            console.log("the lat " + lat + " and long " + long + " of my map");
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
               attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
               maxZoom: 18,
               id: 'mapbox.streets',
               accessToken: 'pk.eyJ1IjoiZWdjYXJsIiwiYSI6ImNqZnhmcXljMjA5ZjkyeG5wcDNyZzR0cmIifQ.6TRl8bfjecwZjTuMbBlXFA'
-            }).addTo(mymap);
+            }).addTo(myMap);
 
             // creating a marker on the map, supposed to update with marker based on responses from beermapping, but doesn't update currently
-            let marker = L.marker([lat, long]).addTo(mymap);
+            let marker = L.marker([lat, long]).addTo(myMap);
 
             // adding popup to the marker that populates on click, add to brewery name and type from beermapping. the names do not currently update
             marker.bindPopup("<b>" + name + "</b>" + "<br>" + type);
             console.log("i don't show up after first click on a div result")
-          });
+          // });
 
         })
       });

@@ -177,9 +177,11 @@ aside {
 }
 
 #search-form {
+    background: #daa521d6;
     border: solid 2px black;
     font-size: 22px;
     color: #404040;
+
 }
 
 .r-link:active {

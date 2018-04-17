@@ -449,8 +449,8 @@ function createCommon() {
       form.on("submit", function (event) {
         event.preventDefault();
         getBrews(
-          $("#city").val().toLowerCase(),
-          $("#state").val().toLowerCase(),
+          $("#city").val().trim().toLowerCase(),
+          $("#state").val().trim().toLowerCase(),
         )
       });
     },

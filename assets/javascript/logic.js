@@ -16,7 +16,12 @@ $(document).ready(function () {
 function viewPortScale() {
   //set wrapper height based off of viewport
 
-  $("#wrapper").height($(window).height() - $("header").height() + 10);
+  let width = $(window).width;
+
+  $("#wrapper").height(
+    $(window).height() - $("header").height() + 10);
+
+
 }
 
 

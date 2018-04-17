@@ -50,8 +50,8 @@ aside {
   background: white;
 }
 
-td {
-    text-align: left;
+.invisible {
+    opacity: 0;
 }
 
 #menu-toggle {
@@ -59,7 +59,7 @@ td {
 }
 
 #sidebar-wrapper {
-  background-color: goldenrod;
+  background-color: #daa520f2;
   font-size: 43px;
 }
 #sidebar-wrapper li {
@@ -166,6 +166,13 @@ td {
 }
 
 .search-result-div {
+    background: #daa521d6;
+    border: solid 2px black;
+    font-size: 22px;
+    color: #404040;
+}
+
+#search-form {
     background: #daa521d6;
     border: solid 2px black;
     font-size: 22px;

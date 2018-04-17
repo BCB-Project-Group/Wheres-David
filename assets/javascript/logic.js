@@ -1,8 +1,10 @@
 //on Start
 
+$("section").css("display", "none");
 $(document).ready(function () {
   firebaseInit();
   createCommon();
+  alchoholText();
   initialCheck();
   listeners.resize();
   listeners.menu();
@@ -16,7 +18,12 @@ $(document).ready(function () {
 function viewPortScale() {
   //set wrapper height based off of viewport
 
-  $("#wrapper").height($(window).height() - $("header").height() + 10);
+  let width = $(window).width;
+
+  $("#wrapper").height(
+    $(window).height() - $("header").height() + 10);
+
+
 }
 
 
@@ -56,6 +63,7 @@ function displaySwitch() {
 
   function searchFade() {
     checkHeader();
+    listeners.search();
     $("#search").fadeIn(750)
   }
 
@@ -105,22 +113,26 @@ function displaySwitch() {
 
 function displayBrews(target, offset) {
 
-  function cascadeDisplay(array, i) {
+  function cascadeDisplay(array, i, target) {
     //cascade effect for dynamic results
+
+    console.log("cascade");
 
     if (i < array.length) {
       $(array[i]).fadeIn(50, () => {
         i++;
-        cascadeDisplay(array, i)
+        cascadeDisplay(array, i, target)
       });
     }
     else {
-      pageButtons(target)
+      pageButtons(target, true)
     }
   }
 
-  function pageButtons(target) {
+  function pageButtons(target, pos) {
     //create display buttons and activate listener
+
+    console.log("page buttons");
 
     let row = $("<div class='row mt-4 mob-row p-0'></div>");
 
@@ -128,22 +140,35 @@ function displayBrews(target, offset) {
       "<div class='left col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
       + " data-direction='left'><p><</p></div>"
     );
+    if (brews.offset === 0) {
+      left.addClass("invisible")
+    }
     row.append(left);
 
     let right = $(
       "<div class='right col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
       + " data-direction='right'><p>></p></div>"
     );
+    if (brews.offset === brews.data.length - 1) {
+      right.addClass("invisible")
+    }
     row.append(right);
 
-    target.append(row)
+    if (!pos) {
+      target.prepend(row);
+    }
+    else if (pos) {
+      target.append(row);
+      listeners.mobility()
+    }
   }
 
-  $(".results").empty();
+  $(`#${window.state}-results`).empty();
+  console.log("initial");
   window.brews.data[offset].forEach(data => {
       let elem = $(
         `<div class="row justify-content-center mt-4 p-0">`
-        + `<div class="col-12 search-result-div card" style="display: none">`
+        + `<div class="col-12 search-result-div card" data-id="${data.id}" style="display: none">`
         + `<div class="row text-center card-body">`
         + `<div class="col-md-3 col-12 result-name result-text">${data.name}</div>`
         + `<div class="col-md-3 col-12 result-address result-text">${data.street}</br>${data.zip}</div>`
@@ -159,8 +184,23 @@ function displayBrews(target, offset) {
   let counter = 0;
   let elems = $(".search-result-div").toArray();
 
-  cascadeDisplay(elems, counter);
-  pageButtons()
+  pageButtons(target, false);
+  cascadeDisplay(elems, counter, target);
+}
+
+function alchoholText() {
+  let text = ["Amber", "Lager", "Blonde", "Pilsner", "Stout", "Porter", "Sour", "Bitter", "IPA", "Wheat", "Cider", "Ale"];
+  let counter = 0;
+  let elem = document.getElementById("role");
+  let inst = setInterval(change, 1400);
+
+  function change() {
+    elem.innerHTML = text[counter];
+    counter++;
+    if (counter >= text.length) {
+      counter = 0;
+    }
+  }
 }
 
 //Database Functions
@@ -289,6 +329,7 @@ function createCommon() {
   //setup commonly used values
 
   window.header = false;
+  window.repetitionGate = false;
 
   window.userData = {
     name: undefined,
@@ -371,7 +412,47 @@ function createCommon() {
 
     mobility: () => {
 
+      let mob = $(".mob-button");
+      mob.off("click");
 
+      mob.on("click", function (event) {
+
+        event.preventDefault();
+        console.log("left");
+        let clicked = $(this);
+        if (clicked.attr("data-direction") === "right"
+          && brews.offset < brews.data.length - 1) {
+          console.log("more brews");
+          brews.offset++;
+          // $(".search-result-div").fadeOut(750, () => {
+          displayBrews($(`#${window.state}-results`), brews.offset)
+          //   }
+          // );
+        }
+
+        else if (clicked.attr("data-direction") === "left"
+          && brews.offset > 0) {
+          brews.offset--;
+          // $(".search-result-div").fadeOut(750, () => {
+          console.log("more brews");
+          displayBrews($(`#${window.state}-results`), brews.offset)
+          //   }
+          // );
+        }
+      });
+    },
+
+    search: () => {
+
+      let form = $("#search-form");
+      form.off("submit");
+      form.on("submit", function(event) {
+        event.preventDefault();
+        getBrews(
+          $("#city").val().toLowerCase(),
+          $("#state").val().toLowerCase(),
+          )
+      });
     }
   };
 }

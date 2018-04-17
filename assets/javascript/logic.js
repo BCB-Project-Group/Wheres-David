@@ -147,19 +147,20 @@ function displayBrews(target, offset) {
 
   $(".results").empty();
   window.brews.data[offset].forEach(data => {
-      let elem = $(
-        `<div class="row justify-content-center mt-4 p-0">`
-        + `<div class="col-12 search-result-div card" style="display: none">`
-        + `<div class="row text-center card-body">`
-        + `<div class="col-md-3 col-12 result-name result-text">${data.name}</div>`
-        + `<div class="col-md-3 col-12 result-address result-text">${data.street}</br>${data.zip}</div>`
-        + `<div class="col-md-3 col-12 result-phone result-text">${data.phone}</div>`
-        + `<div class="col-md-3 col-12 result-url result-text"><a class="r-link" href="https://${data.url}" target="_blank">Website</a></div>`
-        + `</div></div></div>`
-      );
+    let elem = $(
+      `<div class="row justify-content-center mt-4 p-0">`
+      + `<div class="col-12 search-result-div card" data-id="${data.id}" style="display: none">`
+      + `<div class="row text-center card-body">`
+      + `<div class="col-md-3 col-12 result-name result-text">${data.name}</div>`
+      + `<div class="col-md-3 col-12 result-address result-text">${data.street}</br>${data.zip}</div>`
+      + `<div class="col-md-3 col-12 result-phone result-text">${data.phone}</div>`
+      + `<div class="col-md-3 col-12 result-url result-text"><a class="r-link" href="https://${data.url}" target="_blank">Website</a></div>`
+      + `</div></div></div>`
+    );
 
-      target.append(elem);
-    }
+    target.append(elem);
+  }
+
   );
 
   let counter = 0;
@@ -185,12 +186,13 @@ function firebaseInit() {
 
   window.db = firebase.database();
 }
-
 function storeUser(input) {
   console.log("storeUser");
   try {
     dbRef.user = db.ref(
-      `/users/${input}`
+
+  `/users/${input}`
+
     );
     dbRef.user.set({
       username: input,
@@ -283,7 +285,9 @@ function getBrews(city, state) {
     console.log(response);
     separateResults(response);
     displayBrews($(
-      `#${window.state}-results`
+
+  `#${window.state}-results`
+
     ), 0)
   });
 }
@@ -388,14 +392,18 @@ function initialCheck() {
   if (typeof localStorage.username !== "undefined") {
     let user = localStorage.username;
     db.ref(
-      `/users/${user}`
+
+  `/users/${user}`
+
     ).once("value").then(snap => {
       if (snap.exists()) {
         userData.name = snap.val().username;
         userData.location = snap.val().location;
         userData.favorites = snap.val().favorites;
         window.dbRef.user = db.ref(
-          `/users/${user}`
+
+  `/users/${user}`
+
         );
         window.state = "home"
       }

@@ -5,6 +5,7 @@ $(document).ready(function () {
   createCommon();
   initialCheck();
   listeners.resize();
+  listeners.menu();
   listeners.sideBar();
 });
 
@@ -15,8 +16,7 @@ $(document).ready(function () {
 function viewPortScale() {
   //set wrapper height based off of viewport
 
-  console.log("scaling...");
-  $("#wrapper").height($(window).height() - $("header").height());
+  $("#wrapper").height($(window).height() - $("header").height() + 10);
 }
 
 
@@ -38,7 +38,7 @@ function displaySwitch() {
         $("#sign-in-banner-2").fadeIn(750, () => {
           setTimeout(() => {
             $("#sign-in-form").fadeIn(750);
-            listeners.signIn()
+            window.listeners.signIn()
           }, 250);
         })
       }, 250)
@@ -95,7 +95,6 @@ function displaySwitch() {
         favoritesFade();
         break;
       case "about":
-        console.log("bout");
         aboutFade();
         break;
     }
@@ -128,14 +127,12 @@ function displayBrews(target, offset) {
       + " data-direction='left'><p><</p></div>"
     );
     row.append(left);
-    console.log("doing    it")
 
     let right = $(
       "<div class='right col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
       + " data-direction='right'><p>></p></div>"
     );
     row.append(right);
-    console.log("doing    it")
 
     target.append(row)
   }
@@ -146,15 +143,16 @@ function displayBrews(target, offset) {
       `<div class="row justify-content-center mt-4 p-0">`
       + `<div class="col-12 search-result-div card" style="display: none">`
       + `<div class="row text-center card-body">`
-      + `<div class="col-3 result-name result-text">${data.name}</div>`
-      + `<div class="col-3 result-address result-text">${data.street}</br>${data.zip}</div>`
-      + `<div class="col-3 result-phone result-text">${data.phone}</div>`
-      + `<div class="col-3 result-url result-text"><a class="r-link" href="https://${data.url}" target="_blank">Website</a></div>`
+      + `<div class="col-md-3 col-12 result-name result-text">${data.name}</div>`
+      + `<div class="col-md-3 col-12 result-address result-text">${data.street}</br>${data.zip}</div>`
+      + `<div class="col-md-3 col-12 result-phone result-text">${data.phone}</div>`
+      + `<div class="col-md-3 col-12 result-url result-text"><a class="r-link" href="https://${data.url}" target="_blank">Website</a></div>`
       + `</div></div></div>`
     );
 
     target.append(elem);
-  });
+  }
+);
 
   let counter = 0;
   let elems = $(".search-result-div").toArray();
@@ -183,7 +181,9 @@ function firebaseInit() {
 function storeUser(input) {
   console.log("storeUser");
   try {
-    dbRef.user = db.ref(`/users/${input}`);
+    dbRef.user = db.ref(
+  `/users/${input}`
+);
     dbRef.user.set({
       username: input,
       location: userData.location,
@@ -276,7 +276,9 @@ function getBrews(city, state) {
   }).then(response => {
     console.log(response);
     separateResults(response);
-    displayBrews($(`#${window.state}-results`), 0)
+    displayBrews($(
+  `#${window.state}-results`
+), 0)
   });
 }
 
@@ -285,12 +287,6 @@ function getBrews(city, state) {
 
 function createCommon() {
   //setup commonly used values
-
-  $("#menu-toggle").click(function (e) {
-    e.preventDefault();
-    console.log("bar toggle");
-    $("#wrapper").toggleClass("toggled");
-  });
 
   window.header = false;
 
@@ -329,11 +325,12 @@ function createCommon() {
 
     sideBar: () => {
 
-      let a = $("a");
+      let a = $(".sideLink");
+
       a.on("click", function (event) {
         event.preventDefault();
         let clicked = $(this);
-        console.log(clicked.attr("data-dir"));
+        $("#wrapper").toggleClass("toggled");
 
         switch (clicked.attr("data-dir")) {
           case "about":
@@ -361,7 +358,15 @@ function createCommon() {
 
       $(window).on("resize", () => {
         viewPortScale()
-      })
+      });
+    },
+
+    menu: () => {
+
+      $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
     }
   };
 }
@@ -371,12 +376,16 @@ function initialCheck() {
 
   if (typeof localStorage.username !== "undefined") {
     let user = localStorage.username;
-    db.ref(`/users/${user}`).once("value").then(snap => {
+    db.ref(
+  `/users/${user}`
+).once("value").then(snap => {
       if (snap.exists()) {
         userData.name = snap.val().username;
         userData.location = snap.val().location;
         userData.favorites = snap.val().favorites;
-        window.dbRef.user = db.ref(`/users/${user}`);
+        window.dbRef.user = db.ref(
+  `/users/${user}`
+);
         window.state = "home"
       }
       else {

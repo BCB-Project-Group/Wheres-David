@@ -136,13 +136,16 @@ td {
   50% {background-color: black;}
   100% {background-color:gray;}
 }
-/* The elements to apply the animation to */
-#menu-toggle  {
-  background-color: lightgray;
-  animation-name: example;
-  animation-duration: 4s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
+#menu-toggle {
+    background-color: lightgray;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+#menu-toggle:after {
+    color: white;
 }
 
 #role {

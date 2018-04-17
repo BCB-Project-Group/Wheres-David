@@ -72,16 +72,16 @@
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li>
-        <a href="#" data-dir="home">Home</a>
+        <a href="#" class="sideLink" data-dir="home">Home</a>
       </li>
       <li>
-        <a href="#" data-dir="about">About</a>
+        <a href="#" class="sideLink" data-dir="about">About</a>
       </li>
       <li>
-        <a href="#" data-dir="favorites">Favorites</a>
+        <a href="#" class="sideLink" data-dir="favorites">Favorites</a>
       </li>
       <li>
-        <a href="#" data-dir="search">Search</a>
+        <a href="#" class="sideLink" data-dir="search">Search</a>
       </li>
     </ul>
   </div>
@@ -91,30 +91,12 @@
   <div id="page-content-wrapper">
   
     <!-- Search Content -->
-    <section class="container" id="search">
-        <div class="input-group">
-            <span class="input-group-addon">
-                <i class="glyphicon glyphicon-search"></i>
-            </span>
-            <input type="text"  class="form-control" placeholder="Search"/>
+    <section class="container" id="search" style="display: none;">
+      <div class="row justify-content-center">
+        <div class="col-12 welcome text-center color-text">
+          <h1>Search Brews</h1>
         </div>
-        
-      <h1 class="welcome text-center color-text">Nearby Brewery Results!</h1>
-      <table class="table table-hover">
-        <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Status</th>
-          <th scope="col">Location</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Yelp Star Rating</th>
-          <th scope="col">Add to Favorites</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      </div>
     </section>
 
     <!--Home section-->

@@ -199,7 +199,13 @@ aside {
 
 }
 
-#search-submit {margin-top: 25px;padding-bottom:  6px;background: #ffffff78;}
+
+#searchbutton {
+    position: absolute;
+    top: 1.5em;
+    left: .5em;
+    width: 50%;
+}
 
 .r-link:active {
 
@@ -238,9 +244,10 @@ aside {
 
 #searchbutton {
     position: absolute;
-    top: 1.5em;
-    left: .5em;
-    width: 50%;
+    top: 46px;
+    left: 41px;
+    width: 80%;
+    height: 44px;
 }
 
 .auth-image {

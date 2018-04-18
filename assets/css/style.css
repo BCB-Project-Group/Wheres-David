@@ -189,6 +189,7 @@ aside {
 
 .search-result-div:hover {
     background: #fdb400;
+    border: solid 2px white;
 }
 
 #search-form {

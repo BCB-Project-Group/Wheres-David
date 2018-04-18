@@ -20,7 +20,9 @@ h2 {
     font-size: 50px;
 }
 
-
+h3 {
+  font-size: 30px;
+}
 
 p.container{
   font-size: 20px;
@@ -125,6 +127,7 @@ aside {
 
 #contact-box{
   color: Black;
+  font-size: 15px;
 }
 
 

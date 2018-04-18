@@ -13,11 +13,28 @@ body {
 h1 {
     font-size: 70px;
     text-align:  center;
+    text-shadow:  -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 h2 {
     font-size: 50px;
 }
+
+#aboutus{
+  font-size: 70px;
+  text-align:  center;
+  text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+p.container{
+  font-size: 20px;
+  background: #111;
+  border-radius: 25%;
+  padding: 1.5em;
+  margin-top: 1em;
+}
+
 
 aside {
 
@@ -109,6 +126,7 @@ aside {
 }
 
 #picture{
+  border-radius: 20%;
 }
 
 #contact-box{
@@ -196,3 +214,13 @@ aside {
 .r-link:visited {
     color: inherit;
 }
+
+#searchbutton{
+    position: absolute;
+    top: 1.5em;
+    left: .5em;
+    width: 50%;
+}
+
+
+

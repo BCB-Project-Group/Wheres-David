@@ -507,7 +507,7 @@ function createCommon() {
           url: queryURL,
           method: "GET"
         }).then(function (response) {
-          // console.log("this is the response object - ", response);
+          console.log("this is the response object - ", response);
 
           mapModal.fadeIn(750, () => {
             mapExit()

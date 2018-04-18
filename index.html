@@ -21,7 +21,7 @@
   <div class="row justify-content-between mt-2">
     <div class="col-auto"></div>
     <div class="text-center col color-text">
-      <h1>Where's David?</h1>  
+      <h1>Where's David?</h1>
     </div>
     <div class="col-auto m-auto p-2">
       <a href="#menu-toggle" class="btn btn-secondary mr-4 p-2 " id="menu-toggle">Menu</a>
@@ -105,10 +105,20 @@
               <h2 class="btn btn-secondary position-relative float-right color-text p-5" id="exit-button">X</h2>
             </div>
           </div>
-          <div class="row mt-3 justify-content-center p-2">
-            <div class="col-12 card body bg-light" id="map">
+          <div class="row mt-3 justify-content-between p-2">
+            <div class="col-auto card body" id="map">
               <div class="my-leaflet-map-container" id="mapId" style="height: 400px; width: 400px"></div>
             </div>
+            <div class="col-auto card-body">
+              <ul class="list-group m-auto" id="mod-list" style="width: min-content;">
+                <li class="list-group-item" id="mod-city">dummy</li>
+                <li class="list-group-item" id="mod-street">dummy</li>
+                <li class="list-group-item" id="mod-phone">dummy</li>
+                <li class="list-group-item" id="mod-website">dummy</li>
+                <li class="list-group-item" id="mod-rating">dummy</li>
+              </ul>
+            </div>
+
           </div>
         </div>
       </div>
@@ -144,7 +154,7 @@
             </div>
             <div class="col-12 col-md-4">
               <div class="row">
-                <label class="col-12" for="state">   </label>
+                <label class="col-12" for="state"> </label>
               </div>
               <div class="row">
 
@@ -201,9 +211,11 @@
 
       <div class="row justify-content-center">
         <div class="col-6 text-left">
-          <p class="container"> We were inspired by David missing class a couple Saturdays ago due to a hangover, and we took it upon ourselves to
+          <p class="container"> We were inspired by David missing class a couple Saturdays ago due to a hangover, and we
+            took it upon ourselves to
             make
-            the world a better place by giving people the option to feel a good buzz or get chocolate wasted by visiting the breweries in the area
+            the world a better place by giving people the option to feel a good buzz or get chocolate wasted by visiting
+            the breweries in the area
             of
             their choice.</p>
         </div>

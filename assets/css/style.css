@@ -231,8 +231,9 @@ aside {
     border: solid 2px black;
     font-size: 22px;
     color: #404040;
+}
 
-#searchbutton{
+#searchbutton {
     position: absolute;
     top: 1.5em;
     left: .5em;

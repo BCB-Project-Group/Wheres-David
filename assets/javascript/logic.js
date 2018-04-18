@@ -149,7 +149,7 @@ function displayBrews(target, offset) {
       "<div class='right col-6 text-center btn mob-button p-0 m-0 card search-result-div'"
       + " data-direction='right'><p>></p></div>"
     );
-    if (brews.offset === brews.data.length - 1) {
+    if (brews.offset === brews.data[0].length - 1) {
       right.addClass("invisible")
     }
     row.append(right);
@@ -420,9 +420,11 @@ function createCommon() {
         event.preventDefault();
         console.log("left");
         let clicked = $(this);
+        console.log(clicked);
+        console.log(clicked.attr("data-direction"));
         if (clicked.attr("data-direction") === "right"
           && brews.offset < brews.data.length - 1) {
-          console.log("more brews");
+          console.log("right");
           brews.offset++;
           // $(".search-result-div").fadeOut(750, () => {
           displayBrews($(`#${window.state}-results`), brews.offset)
@@ -432,6 +434,7 @@ function createCommon() {
 
         else if (clicked.attr("data-direction") === "left"
           && brews.offset > 0) {
+          console.log("left");
           brews.offset--;
           // $(".search-result-div").fadeOut(750, () => {
           console.log("more brews");

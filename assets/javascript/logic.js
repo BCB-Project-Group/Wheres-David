@@ -186,6 +186,7 @@ function displayBrews(target, offset) {
 
   pageButtons(target, false);
   cascadeDisplay(elems, counter, target);
+  listeners.map()
 }
 
 function alchoholText() {
@@ -481,10 +482,20 @@ function createCommon() {
 
     map: () => {
 
+      function mapExit() {
+        let button = $("#exit-button");
+        button.off("click");
+        button.on("click", event => {
+          event.preventDefault();
+          mapModal.fadeOut(750);
+        })
+      }
 
-      $(".search-result-div").on("click", function () {
+      let searchResult = $(".search-result-div");
+      let mapModal = $("#map-modal");
+      searchResult.off("click");
+      searchResult.on("click", function () {
 
-        $("#map-modal").fadeIn(750);
         let barID = $(this).attr("data-id");
         // console.log("this the bar ID of the div that was clicked - " + barID);
         // example of div: <div class="search-result-div" barID="31">Anchor Brewing</div>
@@ -498,6 +509,10 @@ function createCommon() {
         }).then(function (response) {
           // console.log("this is the response object - ", response);
 
+          mapModal.fadeIn(750, () => {
+            mapExit()
+          });
+
           response.forEach(element => {
             // console.log(element.lat);
             // console.log(element.lng);
@@ -505,6 +520,7 @@ function createCommon() {
             window.businessLong = element.lng;
             window.businessName = element.name;
             window.businessType = element.status;
+            $("#map-title").text(window.businessName);
             // console.log(businessLat + "this is now var businessLat");
             // console.log(businessLong + "this is now var businessLong");
             myMap.invalidateSize();

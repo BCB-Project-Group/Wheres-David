@@ -97,12 +97,15 @@
     <section class="container-fluid" id="map-modal">
       <div class="row justify-content-center">
         <div class="col-12 col-md-10 card" id="map-card">
-          <div class="row justify-content-center">
-            <div class="col-12 p-2 card-title text-center">
-              <h2 id="map-title">place holder</h2>
+          <div class="row justify-content-between p-3">
+            <div class="col-11 p-2 card-title text-left">
+              <h2 class="color-text" id="map-title"></h2>
+            </div>
+            <div class="col-1  card-title">
+              <h2 class="btn btn-secondary position-relative float-right color-text p-5" id="exit-button">X</h2>
             </div>
           </div>
-          <div class="row mt-3 justify-content-center p-4">
+          <div class="row mt-3 justify-content-center p-2">
             <div class="col-12 card body bg-light" id="map">
               <div class="my-leaflet-map-container" id="mapId" style="height: 400px; width: 400px"></div>
             </div>

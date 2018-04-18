@@ -251,6 +251,11 @@ aside {
     height: 44px;
 }
 
+#map-title {
+    text-shadow:  -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
 .my-leaflet-map-container img {
     max-height: none;
 }

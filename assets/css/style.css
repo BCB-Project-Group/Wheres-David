@@ -217,5 +217,13 @@ aside {
     width: 50%;
 }
 
-
-
+.auth-image {
+  /* Box-model */
+  width: 200px;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /* Positioning */
+  margin-right: 25px;
+  border-radius: 10px;
+}

@@ -251,6 +251,10 @@ aside {
     height: 44px;
 }
 
+.my-leaflet-map-container img {
+    max-height: none;
+}
+
 .auth-image {
   /* Box-model */
   width: 200px;

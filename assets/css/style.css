@@ -130,6 +130,10 @@ aside {
   font-size: 15px;
 }
 
+#comments{
+  background-color: white;
+  margin-top: 5px;
+}
 
 #about {
     color:wheat;
@@ -288,3 +292,27 @@ aside {
   border-radius: 10px;
 
 }
+
+@media (max-width: 1080px) {
+h1 {
+  font-size: 30px;
+}
+h2,h3,p,li,#role {
+  font-size: 20px;
+}
+
+#menu-toggle{
+  font-size: 15px;
+}
+
+#picture{
+  width: 55%;
+}
+
+#comments,#first_name,#last_name,#telephone,#email {
+  width: 60%;
+}
+#contact-box{
+  width: 155%;
+}
+  }

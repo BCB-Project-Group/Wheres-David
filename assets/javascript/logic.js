@@ -69,7 +69,10 @@ function displaySwitch() {
 
   function favoritesFade() {
     checkHeader();
-    $("#favorites").fadeIn(750)
+    $("#favorites").fadeIn(750);
+    window.brews.data = [userData.favorites];
+    window.brews.offset = 0;
+    displayBrews($("#favorites-results"), 0)
   }
 
   function aboutFade() {
@@ -162,21 +165,27 @@ function displayBrews(target, offset) {
       listeners.mobility()
     }
   }
-
+  //dynamically create elements
   $(`#${window.state}-results`).empty();
   console.log("initial");
   window.brews.data[offset].forEach(data => {
+
+    //fix names formatted "name, the"
+    if (data.name.indexOf(",") > -1) {
+      data.name = data.name.split(",")[1] + " " + data.name.split(",")[0]
+    }
+
+      //big title, small street address
       let elem = $(
         `<div class="row justify-content-center mt-4 p-0">`
-        + `<div class="col-12 search-result-div card btn" data-id="${data.id}" style="display: none">`
-        + `<div class="row text-center card-body">`
-        + `<div class="col-md-3 col-12 result-name result-text">${data.name}</div>`
-        + `<div class="col-md-3 col-12 result-address result-text">${data.street}</br>${data.zip}</div>`
-        + `<div class="col-md-3 col-12 result-phone result-text">${data.phone}</div>`
-        + `<div class="col-md-3 col-12 result-url result-text"><a class="r-link" href="https://${data.url}" target="_blank">Website</a></div>`
+        + `<div class="col-12 search-result-div card btn" data-id="${data.id}" style="display: none; overflow: hidden">`
+        + `<div class="row text-center justify-content-center card-body">`
+        + `<div class="col-12 result-name result-text color-text" style="text-shadow: none"><h1>${data.name.split("-")[0]}</h1></div>`
+        + `<div class="col-12 result-name result-text text-dark" style="text-shadow: none"><h2>${data.street}</h2></div>`
         + `</div></div></div>`
       );
 
+      //store original data on jquery object
       elem.data("brew", data);
       target.append(elem);
     }
@@ -500,6 +509,17 @@ function createCommon() {
         })
       }
 
+      function favorite(current) {
+        let fav = $("#mod-fav");
+        fav.off("click");
+        fav.on("click", event => {
+          userData.favorites.push(current);
+          dbRef.user.update({
+            favorites: JSON.stringify(userData.favorites)
+          })
+        })
+      }
+
       let searchResult = $(".search-result-div");
       let mapModal = $("#map-modal");
       searchResult.off("click");
@@ -523,7 +543,8 @@ function createCommon() {
           console.log("this is the response object - ", response);
 
           mapModal.fadeIn(250, () => {
-            mapExit()
+            mapExit();
+            favorite(data)
           });
 
           response.forEach(element => {
@@ -580,7 +601,7 @@ function initialCheck() {
       if (snap.exists()) {
         userData.name = snap.val().username;
         userData.location = snap.val().location;
-        userData.favorites = snap.val().favorites;
+        userData.favorites = JSON.parse(snap.val().favorites);
         window.dbRef.user = db.ref(
           `/users/${user}`
         );

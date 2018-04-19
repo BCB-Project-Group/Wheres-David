@@ -261,6 +261,10 @@ aside {
 
 }
 
+#mod-fav:hover {
+    background: #f5d157;
+}
+
 .my-leaflet-map-container img {
     max-height: none;
 }

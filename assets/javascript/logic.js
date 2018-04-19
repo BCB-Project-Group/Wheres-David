@@ -177,6 +177,7 @@ function displayBrews(target, offset) {
         + `</div></div></div>`
       );
 
+      elem.data("brew", data);
       target.append(elem);
     }
   );
@@ -365,6 +366,14 @@ function createCommon() {
   marker.bindPopup("<b>" + businessName + "</b>" + "<br>" + businessType);
 // console.log("i don't show up after first click on a div result")
 
+  window.mpList = {
+    city: $("#mod-city"),
+    street: $("#mod-street"),
+    phone: $("#mod-phone"),
+    website: $("#mod-website"),
+    rating: $("#mod-rating")
+  };
+
   //listeners
 
   window.listeners = {
@@ -446,7 +455,7 @@ function createCommon() {
         let clicked = $(this);
         console.log(clicked.attr("data-direction"));
         if (clicked.attr("data-direction") === "right"
-         ) {
+        ) {
           console.log("right");
           brews.offset++;
           // $(".search-result-div").fadeOut(750, () => {
@@ -487,19 +496,23 @@ function createCommon() {
         button.off("click");
         button.on("click", event => {
           event.preventDefault();
-          mapModal.fadeOut(750);
+          mapModal.fadeOut(250);
         })
       }
 
       let searchResult = $(".search-result-div");
       let mapModal = $("#map-modal");
       searchResult.off("click");
-      searchResult.on("click", function () {
+      searchResult.on("click", function (event) {
+        if (typeof $(this).attr("data-direction") !== "undefined") {
+          return
+        }
 
+        let data = $(this).parent().data("brew");
+        let selected = $(this).parent();
         let barID = $(this).attr("data-id");
         // console.log("this the bar ID of the div that was clicked - " + barID);
         // example of div: <div class="search-result-div" barID="31">Anchor Brewing</div>
-
 
         let queryURL = "http://beermapping.com/webservice/locmap/1d0dec692e53fe232ce728a7b7212c52/" + barID + "&s=json";
         // search the beermappingDB
@@ -509,7 +522,7 @@ function createCommon() {
         }).then(function (response) {
           console.log("this is the response object - ", response);
 
-          mapModal.fadeIn(750, () => {
+          mapModal.fadeIn(250, () => {
             mapExit()
           });
 
@@ -521,6 +534,12 @@ function createCommon() {
             window.businessName = element.name;
             window.businessType = element.status;
             $("#map-title").text(window.businessName);
+            mpList.city.text("City: " + data.city);
+            mpList.street.text("Street: " + data.street);
+            mpList.phone.text("Phone: " + data.phone);
+            mpList.website.text("Website: " + data.url);
+            mpList.website.attr("href", `https://${data.url}`);
+            mpList.rating.text("Rating: " + data.overall);
             // console.log(businessLat + "this is now var businessLat");
             // console.log(businessLong + "this is now var businessLong");
             myMap.invalidateSize();

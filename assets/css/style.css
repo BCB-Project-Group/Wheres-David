@@ -241,6 +241,7 @@ aside {
     border: solid 2px black;
     font-size: 22px;
     color: #404040;
+    width: max-content;
 }
 
 #searchbutton {

@@ -165,15 +165,28 @@ function displayBrews(target, offset) {
       listeners.mobility()
     }
   }
+
   //dynamically create elements
+
   $(`#${window.state}-results`).empty();
-  console.log("initial");
+
+  if (window.brews.data[0].length < 1
+    || window.brews.data[0][0].name === null) {
+
+    target.append($(
+      "<div class='row justify-content-center text-center color-text welcome'>" +
+      "<h1 class='col-auto'>No Results Found</h1>" +
+      "</div>")
+    );
+    return;
+  }
+
   window.brews.data[offset].forEach(data => {
 
-    //fix names formatted "name, the"
-    if (data.name.indexOf(",") > -1) {
-      data.name = data.name.split(",")[1] + " " + data.name.split(",")[0]
-    }
+      //fix names formatted "name, the"
+      if (data.name.indexOf(",") > -1) {
+        data.name = data.name.split(",")[1] + " " + data.name.split(",")[0]
+      }
 
       //big title, small street address
       let elem = $(
@@ -510,10 +523,12 @@ function createCommon() {
         })
       }
 
-      function favorite(current,parent) {
+      function favorite(current, parent) {
         let fav = $("#mod-fav");
         fav.removeClass("list-group-item-warning");
         fav.removeClass("list-group-item-danger");
+        fav.removeClass("list-group-item-success");
+        fav.removeClass("list-group-item-secondary");
         fav.off("click");
         if (userData.favNames.indexOf(current.name) < 0) {
           //addFavorite
@@ -529,6 +544,11 @@ function createCommon() {
             dbRef.user.update({
               favorites: JSON.stringify(userData.favorites)
             });
+
+            fav.removeClass("list-group-item-warning");
+            fav.addClass("list-group-item-success");
+            fav.text("Saved!");
+            fav.off("click")
           });
         }
         else {
@@ -548,8 +568,13 @@ function createCommon() {
             dbRef.user.update({
               favorites: JSON.stringify(userData.favorites)
             });
+
+            fav.removeClass("list-group-item-danger");
+            fav.addClass("list-group-item-secondary");
+            fav.text("Removed!");
+            fav.off("click");
+
             if (window.state === "favorites") {
-              mapModal.fadeOut(500);
               parent.fadeOut(500);
             }
           });
@@ -577,10 +602,9 @@ function createCommon() {
           method: "GET"
         }).then(function (response) {
           console.log("this is the response object - ", response);
-
+          favorite(data, selected);
           mapModal.fadeIn(250, () => {
             mapExit();
-            favorite(data, selected)
           });
 
           response.forEach(element => {

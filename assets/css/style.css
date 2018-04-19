@@ -261,7 +261,11 @@ aside {
 
 }
 
-#mod-fav:hover {
+.list-group-item-warning:hover {
+    background: #f5d157;
+}
+
+.list-group-item-danger:hover {
     background: #f5d157;
 }
 

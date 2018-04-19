@@ -344,7 +344,8 @@ function createCommon() {
 
   window.userData = {
     name: undefined,
-    favorites: []
+    favorites: [],
+    favNames: []
   };
 
   window.dbRef = {
@@ -509,15 +510,50 @@ function createCommon() {
         })
       }
 
-      function favorite(current) {
+      function favorite(current,parent) {
         let fav = $("#mod-fav");
+        fav.removeClass("list-group-item-warning");
+        fav.removeClass("list-group-item-danger");
         fav.off("click");
-        fav.on("click", event => {
-          userData.favorites.push(current);
-          dbRef.user.update({
-            favorites: JSON.stringify(userData.favorites)
-          })
-        })
+        if (userData.favNames.indexOf(current.name) < 0) {
+          //addFavorite
+
+          fav.addClass("list-group-item-warning");
+          fav.text("Favorite");
+
+          fav.on("click", event => {
+            userData.favorites.push(current);
+
+            userData.favNames.push(current.name);
+
+            dbRef.user.update({
+              favorites: JSON.stringify(userData.favorites)
+            });
+          });
+        }
+        else {
+          //removeFavorite
+
+          fav.addClass("list-group-item-danger");
+          fav.text("Un-Favorite");
+
+          fav.on("click", event => {
+            console.log("removing");
+            userData.favorites.splice(
+              userData.favNames.indexOf(current.name), 1);
+
+            userData.favNames.splice(
+              userData.favNames.indexOf(current.name), 1);
+
+            dbRef.user.update({
+              favorites: JSON.stringify(userData.favorites)
+            });
+            if (window.state === "favorites") {
+              mapModal.fadeOut(500);
+              parent.fadeOut(500);
+            }
+          });
+        }
       }
 
       let searchResult = $(".search-result-div");
@@ -544,7 +580,7 @@ function createCommon() {
 
           mapModal.fadeIn(250, () => {
             mapExit();
-            favorite(data)
+            favorite(data, selected)
           });
 
           response.forEach(element => {
@@ -602,6 +638,9 @@ function initialCheck() {
         userData.name = snap.val().username;
         userData.location = snap.val().location;
         userData.favorites = JSON.parse(snap.val().favorites);
+        userData.favorites.forEach(entry => {
+          userData.favNames.push(entry.name)
+        });
         window.dbRef.user = db.ref(
           `/users/${user}`
         );

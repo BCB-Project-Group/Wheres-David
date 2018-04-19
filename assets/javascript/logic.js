@@ -536,10 +536,26 @@ function createCommon() {
             $("#map-title").text(window.businessName);
             mpList.city.text("City: " + data.city);
             mpList.street.text("Street: " + data.street);
-            mpList.phone.text("Phone: " + data.phone);
-            mpList.website.text("Website: " + data.url);
-            mpList.website.attr("href", `https://${data.url}`);
-            mpList.rating.text("Rating: " + data.overall);
+            if (data.phone.length < 1) {
+              mpList.phone.text("Phone: Unavailable");
+            }
+            else {
+              mpList.phone.text("Phone: " + data.phone);
+            }
+            if (data.url.length < 1) {
+              mpList.website.text("Website: Unavailable");
+              mpList.website.attr("href", `#`);
+            }
+            else {
+              mpList.website.text(data.url);
+              mpList.website.attr("href", `https://${data.url}`);
+            }
+            if (parseInt(data.overall) < 1) {
+              mpList.rating.text("Rating: Unavailable");
+            }
+            else {
+              mpList.rating.text("Rating: " + data.overall);
+            }
             // console.log(businessLat + "this is now var businessLat");
             // console.log(businessLong + "this is now var businessLong");
             myMap.invalidateSize();

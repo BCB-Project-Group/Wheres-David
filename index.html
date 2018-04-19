@@ -96,20 +96,20 @@
     <!--im the map, im the map, im the map, im the map-->
     <section class="container-fluid" id="map-modal">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-10 card" id="map-card">
+        <div class="col-12 col-md-10 col-lg-8 card p-3" id="map-card">
           <div class="row justify-content-between p-3">
-            <div class="col-11 p-2 card-title text-left">
-              <h2 class="color-text" id="map-title"></h2>
+            <div class="col-11  p-2 card-title text-left">
+              <h2 class="color-text pl-3 pl-md-0" id="map-title"></h2>
             </div>
             <div class="col-1  card-title">
-              <div class="btn btn-secondary position-relative float-right color-text pt-0 pb-0 pl-2 pr-2" id="exit-button"><h2>X</h2></div>
+              <div class="btn btn-secondary position-relative float-right color-text pt-0 pb-0 mr-4 mr-md-0 pl-md-2 pr-md-2" id="exit-button"><h2>X</h2></div>
             </div>
           </div>
-          <div class="row mt-3 justify-content-center p-2">
-            <div class="col-auto card body p-3" id="map">
+          <div class="row  mt-3 justify-content-center p-2">
+            <div class="col-12 col-md-auto card body p-0 p-md-3" id="map">
               <div class="my-leaflet-map-container bg-transparent" id="mapId" style="height: 400px; width: 400px"></div>
             </div>
-            <div class="col-auto card-body">
+            <div class="col-12 col-md-auto card-body">
               <ul class="list-group m-auto text-dark" id="mod-list" style="width: max-content;">
                 <li class="mt-3 list-group-item" id="mod-city">dummyyyyyyyyyyyyyy</li>
                 <li class="mt-3 list-group-item" id="mod-street">dummy</li>
@@ -131,7 +131,7 @@
           <h1>Search Brews</h1>
         </div>
       </div>
-      <form class="row mt-3 card p-3" id="search-form">
+      <form class="row mt-3 card p-3 mb-5 mb-md-0" id="search-form">
         <div class="card-body col-12">
           <div class="row">
             <div class=" col-12 col-md-6">
@@ -157,10 +157,7 @@
                 <label class="col-12" for="state"> </label>
               </div>
               <div class="row">
-
-
                 <input class="col-12" type="submit" id="searchbutton" value="search"/>
-
               </div>
             </div>
           </div>

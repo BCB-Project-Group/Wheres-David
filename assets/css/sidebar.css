@@ -100,23 +100,23 @@ body {
 
 @media(min-width:768px) {
     #wrapper {
-        padding-right: 0;
+        padding-right: 0 !important;
     }
     #wrapper.toggled {
-        padding-right: 250px;
+        padding-right: 250px !important;
     }
     #sidebar-wrapper {
-        width: 0;
+        width: 0 !important;
     }
     #wrapper.toggled #sidebar-wrapper {
-        width: 250px;
+        width: 250px !important;
     }
     #page-content-wrapper {
-        padding: 20px;
-        position: relative;
+        padding: 20px !important;
+        position: relative !important;
     }
     #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-left: 0;
+        position: relative !important;
+        margin-left: 0 !important;
     }
 }

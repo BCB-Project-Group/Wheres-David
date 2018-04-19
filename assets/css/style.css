@@ -4,16 +4,16 @@ body {
 }
 
 #role {
-  font-size: 38px;
-  color: lightcyan;
-  text-align: center;
-  padding-right: 70px;
+    font-size: 38px;
+    color: lightcyan;
+    text-align: center;
+    padding-right: 70px;
 }
 
 h1 {
     font-size: 70px;
-    text-align:  center;
-    text-shadow:  -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 h2 {
@@ -21,17 +21,16 @@ h2 {
 }
 
 h3 {
-  font-size: 30px;
+    font-size: 30px;
 }
 
-p.container{
-  font-size: 20px;
-  background: #111;
-  border-radius: 25%;
-  padding: 1.5em;
-  margin-top: 1em;
+p.container {
+    font-size: 20px;
+    background: #111;
+    border-radius: 25%;
+    padding: 1.5em;
+    margin-top: 1em;
 }
-
 
 aside {
 
@@ -47,21 +46,20 @@ aside {
     overflow: auto;
 }
 
-
-.jumbotron {background: #0000008c;}
-
+.jumbotron {
+    background: #0000008c;
+}
 
 .color-text {
     color: wheat;
 }
 
-.container{
-	text-align: center;
+.container {
+    text-align: center;
 }
 
-
 .table {
-  background: white;
+    background: white;
 }
 
 .invisible {
@@ -69,22 +67,23 @@ aside {
 }
 
 #menu-toggle {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 #sidebar-wrapper {
-  background-color: #daa520f2;
-  font-size: 43px;
+    background-color: #daa520f2;
+    font-size: 43px;
 }
+
 #sidebar-wrapper li {
-  padding: 10px;
+    padding: 10px;
 }
 
 .sidebar-nav li a {
-  color: lightcyan;
+    color: lightcyan;
 }
 
-.contact-label{
+.contact-label {
     display: block;
     margin: 1em 1em .25em 1em;
     padding: 0 0 0 0em;
@@ -92,7 +91,7 @@ aside {
 
 }
 
-.contact-input[type="submit"]{
+.contact-input[type="submit"] {
     display: block;
     margin: 1em 0em;
     font-size: 16px;
@@ -101,16 +100,15 @@ aside {
     color: #fff;
     border: none;
 
-
 }
 
-.contact-input[type="text"], textarea{
+.contact-input[type="text"], textarea {
     display: block;
     margin: 0 0;
     width: 25em;
     font-size: 16px;
     padding: .5em;
-    background:  #ffffff78;
+    background: #ffffff78;
 }
 
 #contact {
@@ -121,28 +119,28 @@ aside {
     position: relative;
 }
 
-#picture{
-  border-radius: 20%;
+#picture {
+    border-radius: 20%;
 }
 
-#contact-box{
-  color: Black;
-  font-size: 15px;
+#contact-box {
+    color: Black;
+    font-size: 15px;
 }
 
-#comments{
-  background-color: white;
-  margin-top: 5px;
+#comments {
+    background-color: white;
+    margin-top: 5px;
 }
 
 #about {
-    color:wheat;
+    color: wheat;
     padding: .30em 0 .75em 0;
     text-align: center;
 }
 
-#about #contact-box{
-    background-color:#eee;
+#about #contact-box {
+    background-color: #eee;
     display: inline-block;
     padding: 2em 2em 0em;
     border-radius: 10%;
@@ -150,11 +148,20 @@ aside {
 }
 
 @keyframes example {
-  0% {background-color:gray;}
-  25% {background-color: goldenrod;}
-  50% {background-color: black;}
-  100% {background-color:gray;}
+    0% {
+        background-color: gray;
+    }
+    25% {
+        background-color: goldenrod;
+    }
+    50% {
+        background-color: black;
+    }
+    100% {
+        background-color: gray;
+    }
 }
+
 #menu-toggle {
     background-color: lightgray;
     animation-name: example;
@@ -168,14 +175,15 @@ aside {
 }
 
 #role {
-  background-color: lightcyan;
-  animation-name: example;
-  animation-duration: 4s;
-  height: auto;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  border-bottom: solid 2px #0000008c;
-  background-color: white;
+    background-color: lightcyan;
+    animation-name: example;
+    animation-duration: 4s;
+    height: auto;
+    /* width: 100%; */
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    border-bottom: solid 2px #0000008c;
+    background-color: white;
 }
 
 /*jquery element styles*/
@@ -204,7 +212,6 @@ aside {
 
 }
 
-
 #searchbutton {
     position: absolute;
     top: 1.5em;
@@ -229,7 +236,6 @@ aside {
 .r-link:visited {
     color: inherit;
 }
-
 
 /*map modal*/
 
@@ -282,37 +288,124 @@ aside {
 }
 
 .auth-image {
-  /* Box-model */
-  width: 200px;
-  height: auto;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  /* Positioning */
-  margin-right: 25px;
-  border-radius: 10px;
+    /* Box-model */
+    width: 200px;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    /* Positioning */
+    margin-right: 25px;
+    border-radius: 10px;
 
 }
 
 @media (max-width: 1080px) {
-h1 {
-  font-size: 30px;
-}
-h2,h3,p,li,#role {
-  font-size: 20px;
+
+    #menu-toggle {
+        font-size: 15px;
+    }
+
+    #picture {
+        width: 55%;
+    }
+
+    #comments, #first_name, #last_name, #telephone, #email {
+        width: 60%;
+    }
+
+    #contact-box {
+        width: 155%;
+    }
 }
 
-#menu-toggle{
-  font-size: 15px;
+@media (max-width: 768px) {
+    h1 {
+        font-size: 44px;
+    }
+
+    h2, h3, p, li, #role {
+        font-size: 34px;
+    }
+
+    #search-results {
+        margin-top: 40px;
+    }
+
+    .result-text > h1 {
+        font-size: 17px !important;
+    }
+
+    .result-text > h2 {
+        font-size: 17px !important;
+    }
+
+    body {
+        overflow-y: scroll !important;
+        overflow-x: hidden;
+    }
+
+    .jumbotron {
+        position: relative !important;
+    }
+
+    .my-leaflet-map-container {
+        width: 300px !important;
+        height: 300px !important;
+        margin: auto;
+    }
 }
 
-#picture{
-  width: 55%;
+@media (max-width: 768px) {
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 100% !important;
+    }
+
+    #page-content-wrapper {
+        padding: 0 !important;
+    }
+
+
+
+    .sidebar-nav > li {
+        width: 100%;
+        font-size: 96px;
+        text-align: center;
+        line-height: 157px;
+    }
+
+    .sidebar-nav {
+        width: 100%;
+    }
+
+    #sidebar-wrapper {
+
+    }
+
+    #map-modal {
+        overflow: scroll;
+    }
+
+    #map-modal>li {
+        font-size: 30px;
+    }
 }
 
-#comments,#first_name,#last_name,#telephone,#email {
-  width: 60%;
+@media (max-width: 600px) {
+
+    .sidebar-nav > li {
+        /* width: 100%; */
+        text-align: center;
+        line-height: 40px;
+        font-size: 40px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    h2, h3, p, li, #role {
+        font-size: 19px;
+    }
+
 }
-#contact-box{
-  width: 155%;
-}
-  }

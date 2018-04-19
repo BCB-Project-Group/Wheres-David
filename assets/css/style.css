@@ -7,7 +7,7 @@ body {
     font-size: 38px;
     color: lightcyan;
     text-align: center;
-    padding-right: 70px;
+    /* padding-right: 70px; */
 }
 
 h1 {
@@ -46,7 +46,7 @@ aside {
     overflow: auto;
 }
 
-.jumbotron {
+header {
     background: #0000008c;
 }
 
@@ -344,12 +344,12 @@ aside {
         overflow-x: hidden;
     }
 
-    .jumbotron {
+    header {
         position: relative !important;
     }
 
     .my-leaflet-map-container {
-        width: 300px !important;
+        width: 100% !important;
         height: 300px !important;
         margin: auto;
     }

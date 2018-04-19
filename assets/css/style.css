@@ -261,6 +261,14 @@ aside {
 
 }
 
+.list-group-item-warning:hover {
+    background: #f5d157;
+}
+
+.list-group-item-danger:hover {
+    background: #a7747a;
+}
+
 .my-leaflet-map-container img {
     max-height: none;
 }

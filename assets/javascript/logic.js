@@ -69,7 +69,10 @@ function displaySwitch() {
 
   function favoritesFade() {
     checkHeader();
-    $("#favorites").fadeIn(750)
+    $("#favorites").fadeIn(750);
+    window.brews.data = [userData.favorites];
+    window.brews.offset = 0;
+    displayBrews($("#favorites-results"), 0)
   }
 
   function aboutFade() {
@@ -163,20 +166,39 @@ function displayBrews(target, offset) {
     }
   }
 
+  //dynamically create elements
+
   $(`#${window.state}-results`).empty();
-  console.log("initial");
+
+  if (window.brews.data[0].length < 1
+    || window.brews.data[0][0].name === null) {
+
+    target.append($(
+      "<div class='row justify-content-center text-center color-text welcome'>" +
+      "<h1 class='col-auto'>No Results Found</h1>" +
+      "</div>")
+    );
+    return;
+  }
+
   window.brews.data[offset].forEach(data => {
+
+      //fix names formatted "name, the"
+      if (data.name.indexOf(",") > -1) {
+        data.name = data.name.split(",")[1] + " " + data.name.split(",")[0]
+      }
+
+      //big title, small street address
       let elem = $(
         `<div class="row justify-content-center mt-4 p-0">`
-        + `<div class="col-12 search-result-div card btn" data-id="${data.id}" style="display: none">`
-        + `<div class="row text-center card-body">`
-        + `<div class="col-md-3 col-12 result-name result-text">${data.name}</div>`
-        + `<div class="col-md-3 col-12 result-address result-text">${data.street}</br>${data.zip}</div>`
-        + `<div class="col-md-3 col-12 result-phone result-text">${data.phone}</div>`
-        + `<div class="col-md-3 col-12 result-url result-text"><a class="r-link" href="https://${data.url}" target="_blank">Website</a></div>`
+        + `<div class="col-12 search-result-div card btn" data-id="${data.id}" style="display: none; overflow: hidden">`
+        + `<div class="row text-center justify-content-center card-body">`
+        + `<div class="col-12 result-name result-text color-text" style="text-shadow: none"><h1>${data.name.split("-")[0]}</h1></div>`
+        + `<div class="col-12 result-name result-text text-dark" style="text-shadow: none"><h2>${data.street}</h2></div>`
         + `</div></div></div>`
       );
 
+      //store original data on jquery object
       elem.data("brew", data);
       target.append(elem);
     }
@@ -335,7 +357,8 @@ function createCommon() {
 
   window.userData = {
     name: undefined,
-    favorites: []
+    favorites: [],
+    favNames: []
   };
 
   window.dbRef = {
@@ -500,6 +523,64 @@ function createCommon() {
         })
       }
 
+      function favorite(current, parent) {
+        let fav = $("#mod-fav");
+        fav.removeClass("list-group-item-warning");
+        fav.removeClass("list-group-item-danger");
+        fav.removeClass("list-group-item-success");
+        fav.removeClass("list-group-item-secondary");
+        fav.off("click");
+        if (userData.favNames.indexOf(current.name) < 0) {
+          //addFavorite
+
+          fav.addClass("list-group-item-warning");
+          fav.text("Favorite");
+
+          fav.on("click", event => {
+            userData.favorites.push(current);
+
+            userData.favNames.push(current.name);
+
+            dbRef.user.update({
+              favorites: JSON.stringify(userData.favorites)
+            });
+
+            fav.removeClass("list-group-item-warning");
+            fav.addClass("list-group-item-success");
+            fav.text("Saved!");
+            fav.off("click")
+          });
+        }
+        else {
+          //removeFavorite
+
+          fav.addClass("list-group-item-danger");
+          fav.text("Un-Favorite");
+
+          fav.on("click", event => {
+            console.log("removing");
+            userData.favorites.splice(
+              userData.favNames.indexOf(current.name), 1);
+
+            userData.favNames.splice(
+              userData.favNames.indexOf(current.name), 1);
+
+            dbRef.user.update({
+              favorites: JSON.stringify(userData.favorites)
+            });
+
+            fav.removeClass("list-group-item-danger");
+            fav.addClass("list-group-item-secondary");
+            fav.text("Removed!");
+            fav.off("click");
+
+            if (window.state === "favorites") {
+              parent.fadeOut(500);
+            }
+          });
+        }
+      }
+
       let searchResult = $(".search-result-div");
       let mapModal = $("#map-modal");
       searchResult.off("click");
@@ -521,9 +602,9 @@ function createCommon() {
           method: "GET"
         }).then(function (response) {
           console.log("this is the response object - ", response);
-
+          favorite(data, selected);
           mapModal.fadeIn(250, () => {
-            mapExit()
+            mapExit();
           });
 
           response.forEach(element => {
@@ -580,7 +661,10 @@ function initialCheck() {
       if (snap.exists()) {
         userData.name = snap.val().username;
         userData.location = snap.val().location;
-        userData.favorites = snap.val().favorites;
+        userData.favorites = JSON.parse(snap.val().favorites);
+        userData.favorites.forEach(entry => {
+          userData.favNames.push(entry.name)
+        });
         window.dbRef.user = db.ref(
           `/users/${user}`
         );

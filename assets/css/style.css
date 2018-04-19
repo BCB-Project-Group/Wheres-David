@@ -179,6 +179,7 @@ aside {
     animation-name: example;
     animation-duration: 4s;
     height: auto;
+    /* width: 100%; */
     animation-direction: alternate;
     animation-iteration-count: infinite;
     border-bottom: solid 2px #0000008c;
@@ -295,13 +296,6 @@ aside {
 }
 
 @media (max-width: 1080px) {
-    h1 {
-        font-size: 30px;
-    }
-
-    h2, h3, p, li, #role {
-        font-size: 20px;
-    }
 
     #menu-toggle {
         font-size: 15px;
@@ -320,9 +314,94 @@ aside {
     }
 }
 
+@media (max-width: 768px) {
+    h1 {
+        font-size: 44px;
+    }
 
-@media (max-width: 765px) {
-   #search-results {
-       margin-top: 40px;
-   }
+    h2, h3, p, li, #role {
+        font-size: 34px;
+    }
+
+    #search-results {
+        margin-top: 40px;
+    }
+
+    .result-text > h1 {
+        font-size: 17px !important;
+    }
+
+    .result-text > h2 {
+        font-size: 17px !important;
+    }
+
+    body {
+        overflow-y: scroll !important;
+        overflow-x: hidden;
+    }
+
+    .jumbotron {
+        position: relative !important;
+    }
+
+    .my-leaflet-map-container {
+        width: 300px !important;
+        height: 300px !important;
+        margin: auto;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 100% !important;
+    }
+
+    #page-content-wrapper {
+        padding: 0 !important;
+    }
+
+
+
+    .sidebar-nav > li {
+        width: 100%;
+        font-size: 96px;
+        text-align: center;
+        line-height: 157px;
+    }
+
+    .sidebar-nav {
+        width: 100%;
+    }
+
+    #sidebar-wrapper {
+
+    }
+
+    #map-modal {
+        overflow: scroll;
+    }
+
+    #map-modal>li {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .sidebar-nav > li {
+        /* width: 100%; */
+        text-align: center;
+        line-height: 40px;
+        font-size: 40px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    h2, h3, p, li, #role {
+        font-size: 19px;
+    }
+
 }

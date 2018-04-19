@@ -18,13 +18,18 @@ $(document).ready(function () {
 function viewPortScale() {
   //set wrapper height based off of viewport
 
-  let width = $(window).width;
-  // if (width() > 765) {
 
 
-    $("#wrapper").height(
-      $(window).height() - $("header").height() + 10);
-  // }
+  $("#wrapper").height(
+    $(window).height() - $("header").height() + 10);
+
+  if ($(window).width() < 768) {
+    $("#map-modal").height($(window).height() - 70);
+  }
+
+  if ($(window).width() < 600) {
+    $("#map-modal").height($(window).height() -50)
+  }
 
 
 }
@@ -457,7 +462,7 @@ function createCommon() {
 
     resize: () => {
 
-      $(window).on("resize", () => {
+      $(window, "#wrapper").on("resize", () => {
         viewPortScale()
       });
     },

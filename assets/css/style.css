@@ -241,6 +241,7 @@ aside {
     border: solid 2px black;
     font-size: 22px;
     color: #404040;
+    width: max-content;
 }
 
 #searchbutton {
@@ -249,6 +250,19 @@ aside {
     left: 41px;
     width: 80%;
     height: 44px;
+}
+
+#map-title {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+#mod-list {
+
+}
+
+.my-leaflet-map-container img {
+    max-height: none;
 }
 
 .auth-image {

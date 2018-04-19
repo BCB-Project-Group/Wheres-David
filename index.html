@@ -21,7 +21,7 @@
   <div class="row justify-content-between mt-2">
     <div class="col-auto"></div>
     <div class="text-center col color-text">
-      <h1>Where's David?</h1>  
+      <h1>Where's David?</h1>
     </div>
     <div class="col-auto m-auto p-2">
       <a href="#menu-toggle" class="btn btn-secondary mr-4 p-2 " id="menu-toggle">Menu</a>
@@ -93,18 +93,33 @@
   <!-- Page Content -->
   <div id="page-content-wrapper">
 
+    <!--im the map, im the map, im the map, im the map-->
     <section class="container-fluid" id="map-modal">
       <div class="row justify-content-center">
         <div class="col-12 col-md-10 card" id="map-card">
-          <div class="row justify-content-center">
-            <div class="col-12 p-2 card-title text-center">
-              <h2 id="map-title">place holder</h2>
+          <div class="row justify-content-between p-3">
+            <div class="col-11 p-2 card-title text-left">
+              <h2 class="color-text" id="map-title"></h2>
+            </div>
+            <div class="col-1  card-title">
+              <div class="btn btn-secondary position-relative float-right color-text pt-0 pb-0 pl-2 pr-2" id="exit-button"><h2>X</h2></div>
             </div>
           </div>
-          <div class="row mt-3 justify-content-center p-4">
-            <div class="col-12 card body h-75 bg-light" id="map">
-
+          <div class="row mt-3 justify-content-center p-2">
+            <div class="col-auto card body p-1" id="map">
+              <div class="my-leaflet-map-container" id="mapId" style="height: 400px; width: 400px"></div>
             </div>
+            <div class="col-auto card-body">
+              <ul class="list-group m-auto text-dark" id="mod-list" style="width: max-content;">
+                <li class="mt-3 list-group-item" id="mod-city">dummyyyyyyyyyyyyyy</li>
+                <li class="mt-3 list-group-item" id="mod-street">dummy</li>
+                <li class="mt-3 list-group-item" id="mod-phone">dummy</li>
+                <li class="mt-3 list-group-item" id="mod-rating">dummy</li>
+                <li class="mt-3 list-group-item"><a target="_blank" id="mod-website"></a></li>
+                <li class="mt-3 list-group-item list-group-item-warning" id="mod-fav">Favorite</li>
+              </ul>
+            </div>
+
           </div>
         </div>
       </div>
@@ -140,7 +155,7 @@
             </div>
             <div class="col-12 col-md-4">
               <div class="row">
-                <label class="col-12" for="state">   </label>
+                <label class="col-12" for="state"> </label>
               </div>
               <div class="row">
 
@@ -197,9 +212,11 @@
 
       <div class="row justify-content-center">
         <div class="col-6 text-left">
-          <p class="container"> We were inspired by David missing class a couple Saturdays ago due to a hangover, and we took it upon ourselves to
+          <p class="container"> We were inspired by David missing class a couple Saturdays ago due to a hangover, and we
+            took it upon ourselves to
             make
-            the world a better place by giving people the option to feel a good buzz or get chocolate wasted by visiting the breweries in the area
+            the world a better place by giving people the option to feel a good buzz or get chocolate wasted by visiting
+            the breweries in the area
             of
             their choice.</p>
         </div>

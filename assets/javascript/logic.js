@@ -19,9 +19,12 @@ function viewPortScale() {
   //set wrapper height based off of viewport
 
   let width = $(window).width;
+  // if (width() > 765) {
 
-  $("#wrapper").height(
-    $(window).height() - $("header").height() + 10);
+
+    $("#wrapper").height(
+      $(window).height() - $("header").height() + 10);
+  // }
 
 
 }

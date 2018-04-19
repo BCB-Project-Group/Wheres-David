@@ -279,7 +279,7 @@ function getLocation() {
   // if (typeof localStorage.location === "undefined") {
 
   $.ajax({
-    url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
+    url: "https://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
     method: "GET"
   }).then(response => {
 
@@ -328,7 +328,7 @@ function getBrews(city, state) {
     });
   }
 
-  let url = "http://beermapping.com/webservice/loccity/1d0dec692e53fe232ce728a7b7212c52/"
+  let url = "https://beermapping.com/webservice/loccity/1d0dec692e53fe232ce728a7b7212c52/"
     + city
     + ","
     + state
@@ -595,7 +595,7 @@ function createCommon() {
         // console.log("this the bar ID of the div that was clicked - " + barID);
         // example of div: <div class="search-result-div" barID="31">Anchor Brewing</div>
 
-        let queryURL = "http://beermapping.com/webservice/locmap/1d0dec692e53fe232ce728a7b7212c52/" + barID + "&s=json";
+        let queryURL = "https://beermapping.com/webservice/locmap/1d0dec692e53fe232ce728a7b7212c52/" + barID + "&s=json";
         // search the beermappingDB
         $.ajax({
           url: queryURL,

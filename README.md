@@ -19,6 +19,8 @@ This project makes extensive use of:
 - Bootstrap3
 - jQuery
 - Leaflet.js
+- beermapping api
+- ipstack api
 
 ## attributions
 

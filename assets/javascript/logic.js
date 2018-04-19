@@ -287,7 +287,7 @@ function getLocation() {
   // if (typeof localStorage.location === "undefined") {
 
   $.ajax({
-    url: "http://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
+    url: "https://api.ipstack.com/check?access_key=df701efc4e76275354fadbec1a5fd0e0&format=1",
     method: "GET"
   }).then(response => {
 
